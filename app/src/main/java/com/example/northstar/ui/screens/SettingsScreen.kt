@@ -51,7 +51,7 @@ fun SettingsScreen(
     val language by appSettings.language.collectAsState()
     val quality by appSettings.quality.collectAsState()
     val mapPreferences = remember { com.example.northstar.dash.map.MapPreferences.get(ctx) }
-    val nightMap by mapPreferences.night.collectAsState()
+    val mapMode by mapPreferences.mode.collectAsState()
     val voiceManager = remember { com.example.northstar.dash.nav.VoiceManager.get(ctx) }
     val voiceMode by voiceManager.mode.collectAsState()
     val voice = when (voiceMode) {
@@ -106,9 +106,11 @@ fun SettingsScreen(
         TerraNavCard(modifier = Modifier.fillMaxWidth(), padding = 14.dp) {
             Text(L10n.text(R.string.ui_02e64b7a40b5), color = TextHi)
             Spacer(Modifier.height(10.dp))
-            TerraNavSegmented(listOf("Dia", "Noite"), if (nightMap) "Noite" else "Dia", {
-                mapPreferences.setNight(it == "Noite")
+            val mapModes = listOf("Dia", "Noite", "Automatic")
+            TerraNavSegmented(mapModes, mapModes[mapMode.ordinal], {
+                mapPreferences.setMode(com.example.northstar.dash.map.MapThemeMode.entries[mapModes.indexOf(it)])
             }, Modifier.fillMaxWidth())
+            Text(L10n.text(R.string.map_schedule), color = TextLo, fontSize = 11.sp)
             Spacer(Modifier.height(12.dp))
             Text(L10n.text(R.string.ui_c9384f83fdd4), color = TextMid, fontSize = 12.sp)
             Text(L10n.text(R.string.ui_2977e6dd5998), color = TextLo, fontSize = 11.sp)

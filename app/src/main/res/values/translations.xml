@@ -256,4 +256,11 @@
     <string name="thermal_throttling">Throttling</string>
     <string name="sync_unconfigured">Sync not configured</string>
     <string name="signin_failed">Sign-in failed</string>
+    <string name="service_chain">Chain clean &amp; lube</string>
+    <string name="service_oil">Engine oil</string>
+    <string name="service_air">Air filter</string>
+    <string name="service_brakes">Brake pads (front)</string>
+    <string name="service_coolant">Coolant</string>
+    <string name="map_auto">Automatic</string>
+    <string name="map_schedule">Automatic: dark from 18:00 to 06:00, using the phone’s local time.</string>
 </resources>

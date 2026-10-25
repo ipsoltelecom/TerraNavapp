@@ -54,12 +54,16 @@ data class DashUiState(
     val riderLat: Double? = null,
     val riderLng: Double? = null,
     val riderBearing: Float = 0f,
+    val movingPerspective: Boolean = false,
     val destLatLng: Pair<Double, Double>? = null,
     val routePoints: List<GeoPoint> = emptyList(),
 )
 
 class DashViewModel(app: Application) : AndroidViewModel(app) {
     private val _ui = MutableStateFlow(DashUiState())
+    private val motionPerspective = com.example.northstar.dash.map.MotionPerspective()
+    private var perspectiveAmount = 0f
+    private var perspectiveTime = 0L
     val ui = _ui.asStateFlow()
 
     private val session     = DashSession(viewModelScope)
@@ -530,6 +534,9 @@ class DashViewModel(app: Application) : AndroidViewModel(app) {
             riderLat = matchedLat,
             riderLng = matchedLng,
             riderBearing = heading,
+            movingPerspective = motionPerspective.update(loc?.speed ?: 0f,
+                loc?.let { android.os.SystemClock.elapsedRealtime() - it.elapsedRealtimeNanos / 1_000_000 } ?: Long.MAX_VALUE,
+                loc?.accuracy ?: Float.POSITIVE_INFINITY),
             remainingKm = remainingM?.let { it / 1000.0 },
             etaMinutes = etaSec?.let { (it / 60.0).toInt() },
             maneuver = null,
@@ -600,7 +607,8 @@ class DashViewModel(app: Application) : AndroidViewModel(app) {
             append(if (r != null) r.geometry.size else 0)
         }
         val now = System.currentTimeMillis()
-        if (sig != lastSignature || now - lastRedrawAt > FORCE_REDRAW_MS) {
+        val targetPerspective = if (_ui.value.movingPerspective && headingUp && followMode) 1f else 0f
+        if (sig != lastSignature || kotlin.math.abs(perspectiveAmount - targetPerspective) > 0.001f || now - lastRedrawAt > FORCE_REDRAW_MS) {
             lastSignature = sig
             lastRedrawAt = now
             redrawFrame(centerLat, centerLng, camHeading, remainingM)
@@ -655,6 +663,12 @@ class DashViewModel(app: Application) : AndroidViewModel(app) {
         val etaSecondary = if (etaPrimary != null && !arriving)
             java.text.SimpleDateFormat("h:mm a", L10n.locale).format(java.util.Date(etaArrivalMs))
         else null
+        val nowPerspective = android.os.SystemClock.elapsedRealtime()
+        val step = ((nowPerspective - perspectiveTime).coerceIn(0, 200) / 1200f)
+        perspectiveTime = nowPerspective
+        val wantsPerspective = _ui.value.movingPerspective && headingUp && followMode
+        perspectiveAmount = if (wantsPerspective) (perspectiveAmount + step).coerceAtMost(1f)
+            else (perspectiveAmount - step).coerceAtLeast(0f)
         val frame = MapRenderer.Frame(
             night = mapPreferences.night.value,
             features = roadInfo.state.value.let { data ->
@@ -676,10 +690,7 @@ class DashViewModel(app: Application) : AndroidViewModel(app) {
             route = route?.geometry ?: emptyList(),
             maneuverText = null, // turn-by-turn maneuver banner removed
             remainingText = remainingM?.let { fmtDist(it) },
-            // Top-down (heading-up) nav view. The 3D perspective tilt is DISABLED: warping
-            // flat raster tiles via setPolyToPoly stretches the baked-in map labels and
-            // skews the angle (you can't get true Google-Maps 3D without vector tiles).
-            tilt3d = false,
+            perspective = perspectiveAmount,
             etaPrimary = etaPrimary,
             etaSecondary = etaSecondary,
         )

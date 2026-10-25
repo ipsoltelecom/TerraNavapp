@@ -4,6 +4,14 @@ import com.example.northstar.R
 
 internal object L10nCatalog {
     val ids = intArrayOf(
+        R.string.service_chain,
+        R.string.service_oil,
+        R.string.service_air,
+        R.string.service_brakes,
+        R.string.service_coolant,
+        R.string.map_auto,
+        R.string.map_schedule,
+
         R.string.nav_arriving,
         R.string.thermal_hot,
         R.string.thermal_throttling,

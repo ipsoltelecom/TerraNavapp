@@ -1,5 +1,8 @@
 package com.example.northstar.data
 
+import com.example.northstar.data.localizedName
+
+
 import com.example.northstar.settings.L10n
 import com.example.northstar.R
 import android.app.NotificationChannel
@@ -75,8 +78,8 @@ object MaintenanceNotifier {
     private fun buildText(due: List<MaintenanceItem>, odo: Int): Pair<String, String> {
         fun line(m: MaintenanceItem): String {
             val remaining = m.lastDoneOdoKm + m.intervalKm - odo
-            return if (remaining < 0) L10n.text(R.string.ui_d1b0225f99cb, m.name, -remaining)
-            else L10n.text(R.string.ui_3f2dd8617172, m.name, remaining)
+            return if (remaining < 0) L10n.text(R.string.ui_d1b0225f99cb, m.localizedName, -remaining)
+            else L10n.text(R.string.ui_3f2dd8617172, m.localizedName, remaining)
         }
         return if (due.size == 1) L10n.text(R.string.ui_50d83f1ed6d2) to line(due.first())
         else L10n.text(R.string.ui_fa70519f2962, due.size) to due.joinToString("\n") { line(it) }

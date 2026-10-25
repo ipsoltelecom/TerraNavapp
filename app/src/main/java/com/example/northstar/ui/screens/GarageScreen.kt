@@ -1,5 +1,8 @@
 package com.example.northstar.ui.screens
 
+import com.example.northstar.data.localizedName
+
+
 import com.example.northstar.settings.L10n
 import com.example.northstar.R
 import androidx.compose.foundation.background
@@ -126,9 +129,9 @@ private fun MaintenanceTab(ui: GarageUi, onMark: (MaintenanceItem) -> Unit, onLo
         val tone = toneColor[hero.tone] ?: Gold
         TerraNavCard(modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)) {
             Row(horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.Top, modifier = Modifier.fillMaxWidth()) {
-                Column {
+                Column(Modifier.weight(1f).padding(end = 8.dp)) {
                     Eyebrow(L10n.text(R.string.ui_83922b9c177f))
-                    Text(hero.item.name, color = TextHi, fontSize = 18.sp, fontWeight = FontWeight.Bold, fontFamily = GeistFamily, letterSpacing = (-0.36).sp, modifier = Modifier.padding(top = 5.dp))
+                    Text(hero.item.localizedName, color = TextHi, fontSize = 18.sp, fontWeight = FontWeight.Bold, fontFamily = GeistFamily, letterSpacing = (-0.36).sp, modifier = Modifier.padding(top = 5.dp))
                 }
                 TerraNavChip(
                     dueText(hero.remainingKm),
@@ -167,7 +170,7 @@ private fun MaintenanceTab(ui: GarageUi, onMark: (MaintenanceItem) -> Unit, onLo
                 }
                 Spacer(Modifier.width(13.dp))
                 Column(Modifier.weight(1f)) {
-                    Text(row.item.name, color = TextHi, fontSize = 14.5.sp, fontWeight = FontWeight.SemiBold, fontFamily = GeistFamily)
+                    Text(row.item.localizedName, color = TextHi, fontSize = 14.5.sp, fontWeight = FontWeight.SemiBold, fontFamily = GeistFamily)
                     Text(L10n.text(R.string.ui_0c9ad7ca7982, "%,d".format(row.item.lastDoneOdoKm)), color = TextLo, fontSize = 12.sp, modifier = Modifier.padding(top = 2.dp))
                 }
                 Column(horizontalAlignment = Alignment.End) {
@@ -330,7 +333,7 @@ private fun LogServiceDialog(rows: List<MaintRow>, odo: Int, onMark: (Maintenanc
                     Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth().padding(vertical = 5.dp)) {
                         Icon(iconFor(row.item.iconKey), null, tint = TextMid, modifier = Modifier.size(18.dp))
                         Spacer(Modifier.width(10.dp))
-                        Text(row.item.name, color = TextHi, fontSize = 13.5.sp, modifier = Modifier.weight(1f))
+                        Text(row.item.localizedName, color = TextHi, fontSize = 13.5.sp, modifier = Modifier.weight(1f))
                         TextButton(onClick = { onMark(row.item) }) { Text(L10n.text(R.string.ui_e9b450d14bc2), color = Gold, fontSize = 13.sp) }
                         Icon(TerraNavIcons.Cross, "delete", tint = TextLo, modifier = Modifier.size(16.dp).clickable { onDelete(row.item) })
                     }

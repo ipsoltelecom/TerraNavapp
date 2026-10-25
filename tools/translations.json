@@ -1278,5 +1278,40 @@
     "source": "Sign-in failed",
     "en": "Sign-in failed",
     "pt-BR": "Falha ao entrar"
+  },
+  "service_chain": {
+    "source": "Chain clean & lube",
+    "en": "Chain clean & lube",
+    "pt-BR": "Limpeza e lubrificação da corrente"
+  },
+  "service_oil": {
+    "source": "Engine oil",
+    "en": "Engine oil",
+    "pt-BR": "Óleo do motor"
+  },
+  "service_air": {
+    "source": "Air filter",
+    "en": "Air filter",
+    "pt-BR": "Filtro de ar"
+  },
+  "service_brakes": {
+    "source": "Brake pads (front)",
+    "en": "Brake pads (front)",
+    "pt-BR": "Pastilhas de freio dianteiras"
+  },
+  "service_coolant": {
+    "source": "Coolant",
+    "en": "Coolant",
+    "pt-BR": "Líquido de arrefecimento"
+  },
+  "map_auto": {
+    "source": "Automatic",
+    "en": "Automatic",
+    "pt-BR": "Automático"
+  },
+  "map_schedule": {
+    "source": "Automatic: dark from 18:00 to 06:00, using the phone’s local time.",
+    "en": "Automatic: dark from 18:00 to 06:00, using the phone’s local time.",
+    "pt-BR": "Automático: escuro das 18h às 6h, pelo horário local do celular."
   }
 }

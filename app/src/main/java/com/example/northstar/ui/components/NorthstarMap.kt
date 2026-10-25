@@ -66,6 +66,7 @@ fun TerraNavMap(
     fitRoute: Boolean = false,
     navMode: Boolean = false,
     riderBearing: Float = 0f,
+    movingPerspective: Boolean = false,
 ) {
     val context = LocalContext.current
     val preferences = remember { MapPreferences.get(context) }
@@ -163,7 +164,7 @@ fun TerraNavMap(
     }
 
     // Camera control.
-    LaunchedEffect(styleReady, riderLat, riderLng, riderBearing, navMode, fitRoute, routePoints.size) {
+    LaunchedEffect(styleReady, riderLat, riderLng, riderBearing, navMode, movingPerspective, fitRoute, routePoints.size) {
         val m = map ?: return@LaunchedEffect
         if (!styleReady) return@LaunchedEffect
         when {
@@ -175,7 +176,7 @@ fun TerraNavMap(
             riderLat != null && riderLng != null -> {
                 val target = LatLng(riderLat, riderLng)
                 val pos = if (navMode)
-                    CameraPosition.Builder().target(target).zoom(NAV_ZOOM).tilt(NAV_TILT).bearing(riderBearing.toDouble()).build()
+                    CameraPosition.Builder().target(target).zoom(if (movingPerspective) NAV_ZOOM - 0.6 else NAV_ZOOM).tilt(if (movingPerspective) NAV_TILT else 0.0).bearing(riderBearing.toDouble()).build()
                 else
                     CameraPosition.Builder().target(target).zoom(FOLLOW_ZOOM).tilt(0.0).bearing(0.0).build()
                 runCatching { m.animateCamera(CameraUpdateFactory.newCameraPosition(pos), 600) }

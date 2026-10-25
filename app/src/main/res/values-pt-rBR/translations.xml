@@ -256,4 +256,11 @@
     <string name="thermal_throttling">Reduzindo desempenho</string>
     <string name="sync_unconfigured">Sincronização não configurada</string>
     <string name="signin_failed">Falha ao entrar</string>
+    <string name="service_chain">Limpeza e lubrificação da corrente</string>
+    <string name="service_oil">Óleo do motor</string>
+    <string name="service_air">Filtro de ar</string>
+    <string name="service_brakes">Pastilhas de freio dianteiras</string>
+    <string name="service_coolant">Líquido de arrefecimento</string>
+    <string name="map_auto">Automático</string>
+    <string name="map_schedule">Automático: escuro das 18h às 6h, pelo horário local do celular.</string>
 </resources>

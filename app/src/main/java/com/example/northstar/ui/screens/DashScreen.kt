@@ -235,6 +235,9 @@ fun DashScreen(vm: DashViewModel = viewModel()) {
                 TerraNavMap(
                     riderLat = ui.riderLat,
                     riderLng = ui.riderLng,
+                    navMode = ui.headingUp && ui.followMode,
+                    riderBearing = ui.riderBearing,
+                    movingPerspective = ui.movingPerspective,
                     dest = ui.destLatLng,
                     routePoints = ui.routePoints,
                     hasLocationPermission = hasEssentialPermissions(),

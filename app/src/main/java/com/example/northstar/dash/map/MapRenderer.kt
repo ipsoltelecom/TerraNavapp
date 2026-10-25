@@ -42,7 +42,7 @@ class MapRenderer(private val tiles: TileProvider) {
         val route: List<GeoPoint> = emptyList(),
         val maneuverText: String? = null,  // e.g. "Turn left · 400 m"
         val remainingText: String? = null, // e.g. "186 km"
-        val tilt3d: Boolean = false,       // perspective 3D view (nav heading-up only)
+        val perspective: Float = 0f,       // perspective 3D view (nav heading-up only)
         val etaPrimary: String? = null,    // big glance value, e.g. "24 min" (nav only)
         val etaSecondary: String? = null,  // smaller line, e.g. "18 km · 13:32"
     )
@@ -93,6 +93,9 @@ class MapRenderer(private val tiles: TileProvider) {
     private val tiltMatrix = Matrix()
     private val tiltSrc = FloatArray(8)
     private val tiltDst = FloatArray(8)
+    private val inverseTilt = Matrix()
+    private val visibleCorners = FloatArray(8)
+    private val projectedPivot = FloatArray(2)
 
     fun draw(canvas: Canvas, f: Frame) {
         val w = canvas.width
@@ -103,11 +106,11 @@ class MapRenderer(private val tiles: TileProvider) {
         canvas.drawColor(if (f.night) Color.rgb(13,23,40) else bgColor)
 
         val rotate = f.headingUp
-        val tilt = rotate && f.tilt3d
+        val tilt = if (rotate) f.perspective.coerceIn(0f, 1f) else 0f
         // Nav view: bias the rider toward the lower third so the road AHEAD fills the
         // screen (like Google Maps navigation). 3D pushes it lower still. North-up
         // view keeps the rider centred.
-        val pivotY = if (rotate) (if (tilt) h * 0.74f else h * 0.66f) else h / 2f
+        val pivotY = if (rotate) (h * (0.66f + 0.08f * tilt)) else h / 2f
 
         val ts = Mercator.TILE_SIZE
         val cx = Mercator.lngToTileX(f.centerLng, f.zoom) * ts + f.panX
@@ -120,14 +123,14 @@ class MapRenderer(private val tiles: TileProvider) {
 
         if (rotate) {
             canvas.save()
-            if (tilt) {
+            if (tilt > 0f) {
                 // Perspective tilt: warp the flat frame into a trapezoid that converges
                 // toward the top, so the road ahead recedes into the distance (the
                 // Google-Maps 3D look). Near things (rider, bottom) stay ~undistorted;
                 // far things (dest, route ahead) shrink, which is exactly right.
-                val inset = w * 0.18f
-                tiltSrc[0] = 0f;          tiltSrc[1] = 0f
-                tiltSrc[2] = w.toFloat(); tiltSrc[3] = 0f
+                val inset = w * 0.18f * tilt
+                tiltSrc[0] = 0f;          tiltSrc[1] = -h * 0.6f * tilt
+                tiltSrc[2] = w.toFloat(); tiltSrc[3] = -h * 0.6f * tilt
                 tiltSrc[4] = w.toFloat(); tiltSrc[5] = h.toFloat()
                 tiltSrc[6] = 0f;          tiltSrc[7] = h.toFloat()
                 tiltDst[0] = inset;          tiltDst[1] = 0f
@@ -135,17 +138,35 @@ class MapRenderer(private val tiles: TileProvider) {
                 tiltDst[4] = w.toFloat();    tiltDst[5] = h.toFloat()
                 tiltDst[6] = 0f;             tiltDst[7] = h.toFloat()
                 tiltMatrix.setPolyToPoly(tiltSrc, 0, tiltDst, 0, 4)
+                projectedPivot[0] = w / 2f; projectedPivot[1] = pivotY
+                tiltMatrix.mapPoints(projectedPivot)
+                tiltMatrix.postTranslate(0f, pivotY - projectedPivot[1])
                 canvas.concat(tiltMatrix)
             }
             canvas.rotate(-f.heading, w / 2f, pivotY)
         }
 
         // ── Tiles (padded when rotating so corners are covered) ──
-        val pad = if (rotate) (maxOf(w, h) * 0.45).toInt() else 0
-        val txMin = Math.floorDiv((left - pad).toInt(), ts)
-        val tyMin = Math.floorDiv((top - pad).toInt(), ts)
-        val txMax = Math.floorDiv((left + w + pad).toInt(), ts)
-        val tyMax = Math.floorDiv((top + h + pad).toInt(), ts)
+        visibleCorners[0] = 0f; visibleCorners[1] = 0f
+        visibleCorners[2] = w.toFloat(); visibleCorners[3] = 0f
+        visibleCorners[4] = w.toFloat(); visibleCorners[5] = h.toFloat()
+        visibleCorners[6] = 0f; visibleCorners[7] = h.toFloat()
+        if (tilt > 0f && tiltMatrix.invert(inverseTilt)) inverseTilt.mapPoints(visibleCorners)
+        val radians = Math.toRadians(if (rotate) f.heading.toDouble() else 0.0)
+        val co = kotlin.math.cos(radians); val si = kotlin.math.sin(radians)
+        var minX = Float.POSITIVE_INFINITY; var maxX = Float.NEGATIVE_INFINITY
+        var minY = Float.POSITIVE_INFINITY; var maxY = Float.NEGATIVE_INFINITY
+        for (i in 0..6 step 2) {
+            val dx = visibleCorners[i] - w / 2f; val dy = visibleCorners[i+1] - pivotY
+            val x = (co * dx - si * dy + w / 2f).toFloat()
+            val y = (si * dx + co * dy + pivotY).toFloat()
+            minX = minOf(minX,x); maxX = maxOf(maxX,x)
+            minY = minOf(minY,y); maxY = maxOf(maxY,y)
+        }
+        val txMin = kotlin.math.floor((left + minX) / ts).toInt()
+        val tyMin = kotlin.math.floor((top + minY) / ts).toInt()
+        val txMax = kotlin.math.floor((left + maxX) / ts).toInt()
+        val tyMax = kotlin.math.floor((top + maxY) / ts).toInt()
         for (tx in txMin..txMax) for (ty in tyMin..tyMax) {
             val bmp = tiles.get(f.zoom, tx, ty) ?: continue
             val dstL = (tx * ts - left).toFloat()
