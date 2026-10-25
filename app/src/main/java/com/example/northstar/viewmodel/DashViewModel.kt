@@ -205,11 +205,11 @@ class DashViewModel(app: Application) : AndroidViewModel(app) {
         }
 
         session.onError = { msg -> _ui.value = _ui.value.copy(errorMessage = msg); refreshStage() }
-        // Joystick → map zoom only. RIGHT (0x09) = zoom in, LEFT (0x0A) = zoom out.
-        // No exit gesture, no other map control (media section is for media).
+        // Explicit music mode consumes the known left/right buttons; map mode preserves zoom.
         session.onButton = { btn ->
             val code = btn.toInt() and 0xFF
-            val label = when (code) {
+            val music = com.example.northstar.media.MusicBridge.get(getApplication())
+            val label = if (music.handleJoystick(code)) L10n.text(R.string.music_title) + " $code" else when (code) {
                 0x09 -> { zoomIn();  "Zoom in (right)" }
                 0x0A -> { zoomOut(); "Zoom out (left)" }
                 else -> "code 0x${code.toString(16).uppercase()}"
@@ -691,6 +691,9 @@ class DashViewModel(app: Application) : AndroidViewModel(app) {
             maneuverText = null, // turn-by-turn maneuver banner removed
             remainingText = remainingM?.let { fmtDist(it) },
             perspective = perspectiveAmount,
+            musicTitle = com.example.northstar.media.MusicBridge.get(getApplication()).state.value.let {
+                if (it.joystickMusic && it.packageName != null) it.title.takeIf { title -> title.isNotBlank() } else null
+            },
             etaPrimary = etaPrimary,
             etaSecondary = etaSecondary,
         )

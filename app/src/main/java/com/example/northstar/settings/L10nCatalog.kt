@@ -4,6 +4,23 @@ import com.example.northstar.R
 
 internal object L10nCatalog {
     val ids = intArrayOf(
+        R.string.music_title,
+        R.string.music_map,
+        R.string.music_access,
+        R.string.music_enable,
+        R.string.music_settings_error,
+        R.string.music_start,
+        R.string.music_previous,
+        R.string.music_next,
+        R.string.music_pause,
+        R.string.music_play,
+        R.string.music_quieter,
+        R.string.music_louder,
+        R.string.music_joystick,
+        R.string.music_joystick_hint,
+        R.string.music_failed,
+        R.string.music_limits,
+
         R.string.service_chain,
         R.string.service_oil,
         R.string.service_air,

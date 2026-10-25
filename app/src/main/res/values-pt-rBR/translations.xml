@@ -263,4 +263,21 @@
     <string name="service_coolant">Líquido de arrefecimento</string>
     <string name="map_auto">Automático</string>
     <string name="map_schedule">Automático: escuro das 18h às 6h, pelo horário local do celular.</string>
+    <string name="music_title">Música</string>
+    <string name="music_map">Mapa</string>
+    <string name="music_access">Ative o acesso às notificações para o TerraNav controlar Spotify, YouTube e YouTube Music. O TerraNav usa as sessões de mídia; não lê nem salva suas mensagens.</string>
+    <string name="music_enable">Ativar acesso à música</string>
+    <string name="music_settings_error">Abra as configurações do Android e ative o acesso às notificações para o TerraNav.</string>
+    <string name="music_start">Inicie uma faixa no player selecionado no celular.</string>
+    <string name="music_previous">Anterior</string>
+    <string name="music_next">Próxima</string>
+    <string name="music_pause">Pausar</string>
+    <string name="music_play">Tocar</string>
+    <string name="music_quieter">Volume −</string>
+    <string name="music_louder">Volume +</string>
+    <string name="music_joystick">Modo do joystick da moto</string>
+    <string name="music_joystick_hint">Música: direita = próxima, esquerda = anterior. Mapa: zoom. O modo Música é desativado ao perder acesso à mídia ou reiniciar o TerraNav.</string>
+    <string name="music_failed">O player não aceitou o comando. Teste os controles do próprio aplicativo.</string>
+    <string name="music_limits">Os botões disponíveis dependem do player. A reprodução do YouTube em segundo plano segue as restrições da conta e do aplicativo.</string>
+    <string name="music_access_service">TerraNav — controles de música</string>
 </resources>

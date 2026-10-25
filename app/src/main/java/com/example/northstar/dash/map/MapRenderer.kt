@@ -25,6 +25,7 @@ class MapRenderer(private val tiles: TileProvider) {
 
     data class Frame(
         val night: Boolean = true,
+        val musicTitle: String? = null,
         val features: List<RoadFeature> = emptyList(),
         val speedLimit: Int? = null,
         val centerLat: Double,
@@ -96,6 +97,9 @@ class MapRenderer(private val tiles: TileProvider) {
     private val inverseTilt = Matrix()
     private val visibleCorners = FloatArray(8)
     private val projectedPivot = FloatArray(2)
+    private val musicPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = Color.WHITE; textSize = 14f; textAlign = Paint.Align.CENTER
+    }
 
     fun draw(canvas: Canvas, f: Frame) {
         val w = canvas.width
@@ -266,6 +270,15 @@ class MapRenderer(private val tiles: TileProvider) {
                 baseline += bigFm.descent + gap - smallFm.ascent
                 canvas.drawText(secondary, cxp, baseline, etaSmallPaint)
             }
+        }
+
+        f.musicTitle?.let { title ->
+            val maxWidth = 218f
+            val count = musicPaint.breakText(title, true, maxWidth, null)
+            val caption = if (count < title.length) title.take((count - 1).coerceAtLeast(0)) + "…" else title
+            pillRect.set(w / 2f - 117f, 49f, w / 2f + 117f, 80f)
+            canvas.drawRoundRect(pillRect, 12f, 12f, etaBgPaint)
+            canvas.drawText(caption, w / 2f, 69f, musicPaint)
         }
 
         // No other on-map text overlays — the dash's own widgets show name/turn, and the

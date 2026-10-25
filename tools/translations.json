@@ -1313,5 +1313,85 @@
     "source": "Automatic: dark from 18:00 to 06:00, using the phone’s local time.",
     "en": "Automatic: dark from 18:00 to 06:00, using the phone’s local time.",
     "pt-BR": "Automático: escuro das 18h às 6h, pelo horário local do celular."
+  },
+  "music_title": {
+    "source": "Music",
+    "en": "Music",
+    "pt-BR": "Música"
+  },
+  "music_map": {
+    "source": "Map",
+    "en": "Map",
+    "pt-BR": "Mapa"
+  },
+  "music_access": {
+    "source": "Enable notification access for TerraNav to control Spotify, YouTube and YouTube Music. TerraNav uses media sessions; it does not read or save your messages.",
+    "en": "Enable notification access for TerraNav to control Spotify, YouTube and YouTube Music. TerraNav uses media sessions; it does not read or save your messages.",
+    "pt-BR": "Ative o acesso às notificações para o TerraNav controlar Spotify, YouTube e YouTube Music. O TerraNav usa as sessões de mídia; não lê nem salva suas mensagens."
+  },
+  "music_enable": {
+    "source": "Enable music access",
+    "en": "Enable music access",
+    "pt-BR": "Ativar acesso à música"
+  },
+  "music_settings_error": {
+    "source": "Open Android Settings and enable notification access for TerraNav.",
+    "en": "Open Android Settings and enable notification access for TerraNav.",
+    "pt-BR": "Abra as configurações do Android e ative o acesso às notificações para o TerraNav."
+  },
+  "music_start": {
+    "source": "Start a track in the selected player on your phone.",
+    "en": "Start a track in the selected player on your phone.",
+    "pt-BR": "Inicie uma faixa no player selecionado no celular."
+  },
+  "music_previous": {
+    "source": "Previous",
+    "en": "Previous",
+    "pt-BR": "Anterior"
+  },
+  "music_next": {
+    "source": "Next",
+    "en": "Next",
+    "pt-BR": "Próxima"
+  },
+  "music_pause": {
+    "source": "Pause",
+    "en": "Pause",
+    "pt-BR": "Pausar"
+  },
+  "music_play": {
+    "source": "Play",
+    "en": "Play",
+    "pt-BR": "Tocar"
+  },
+  "music_quieter": {
+    "source": "Volume −",
+    "en": "Volume −",
+    "pt-BR": "Volume −"
+  },
+  "music_louder": {
+    "source": "Volume +",
+    "en": "Volume +",
+    "pt-BR": "Volume +"
+  },
+  "music_joystick": {
+    "source": "Handlebar joystick mode",
+    "en": "Handlebar joystick mode",
+    "pt-BR": "Modo do joystick da moto"
+  },
+  "music_joystick_hint": {
+    "source": "Music: right = next, left = previous. Map: zoom. Music mode resets when media access disconnects or TerraNav restarts.",
+    "en": "Music: right = next, left = previous. Map: zoom. Music mode resets when media access disconnects or TerraNav restarts.",
+    "pt-BR": "Música: direita = próxima, esquerda = anterior. Mapa: zoom. O modo Música é desativado ao perder acesso à mídia ou reiniciar o TerraNav."
+  },
+  "music_failed": {
+    "source": "The player did not accept this command. Try its own controls.",
+    "en": "The player did not accept this command. Try its own controls.",
+    "pt-BR": "O player não aceitou o comando. Teste os controles do próprio aplicativo."
+  },
+  "music_limits": {
+    "source": "Available buttons depend on the player. YouTube background playback follows your account and app restrictions.",
+    "en": "Available buttons depend on the player. YouTube background playback follows your account and app restrictions.",
+    "pt-BR": "Os botões disponíveis dependem do player. A reprodução do YouTube em segundo plano segue as restrições da conta e do aplicativo."
   }
 }

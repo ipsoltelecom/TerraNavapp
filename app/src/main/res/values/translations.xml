@@ -263,4 +263,21 @@
     <string name="service_coolant">Coolant</string>
     <string name="map_auto">Automatic</string>
     <string name="map_schedule">Automatic: dark from 18:00 to 06:00, using the phone’s local time.</string>
+    <string name="music_title">Music</string>
+    <string name="music_map">Map</string>
+    <string name="music_access">Enable notification access for TerraNav to control Spotify, YouTube and YouTube Music. TerraNav uses media sessions; it does not read or save your messages.</string>
+    <string name="music_enable">Enable music access</string>
+    <string name="music_settings_error">Open Android Settings and enable notification access for TerraNav.</string>
+    <string name="music_start">Start a track in the selected player on your phone.</string>
+    <string name="music_previous">Previous</string>
+    <string name="music_next">Next</string>
+    <string name="music_pause">Pause</string>
+    <string name="music_play">Play</string>
+    <string name="music_quieter">Volume −</string>
+    <string name="music_louder">Volume +</string>
+    <string name="music_joystick">Handlebar joystick mode</string>
+    <string name="music_joystick_hint">Music: right = next, left = previous. Map: zoom. Music mode resets when media access disconnects or TerraNav restarts.</string>
+    <string name="music_failed">The player did not accept this command. Try its own controls.</string>
+    <string name="music_limits">Available buttons depend on the player. YouTube background playback follows your account and app restrictions.</string>
+    <string name="music_access_service">TerraNav — music controls</string>
 </resources>

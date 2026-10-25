@@ -77,6 +77,8 @@ fun SettingsScreen(
         }
         Spacer(Modifier.height(16.dp))
 
+        MusicCard()
+        Spacer(Modifier.height(16.dp))
         UpdateCard()
         Spacer(Modifier.height(16.dp))
 

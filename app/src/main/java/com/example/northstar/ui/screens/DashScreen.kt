@@ -248,6 +248,9 @@ fun DashScreen(vm: DashViewModel = viewModel()) {
 
         Spacer(Modifier.height(14.dp))
 
+        MusicCard()
+        Spacer(Modifier.height(14.dp))
+
         // Next-turn banner (real turn-by-turn from the routing engine)
         ui.maneuver?.let { mv ->
             Row(
