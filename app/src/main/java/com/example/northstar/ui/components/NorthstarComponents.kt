@@ -1,5 +1,7 @@
 package com.example.northstar.ui.components
 
+import com.example.northstar.settings.L10n
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -179,7 +181,7 @@ fun TerraNavChip(
             Icon(icon, contentDescription = null, tint = fg, modifier = Modifier.size(14.dp))
         }
         Text(
-            label, color = fg, fontSize = 12.5.sp, fontWeight = FontWeight.SemiBold,
+            L10n.known(label), color = fg, fontSize = 12.5.sp, fontWeight = FontWeight.SemiBold,
             fontFamily = GeistFamily, maxLines = 1,
         )
     }
@@ -242,7 +244,7 @@ fun TerraNavSegmented(
                     .clickable { onSelect(opt) },
             ) {
                 Text(
-                    opt, color = if (active) TextHi else TextLo,
+                    L10n.known(opt), color = if (active) TextHi else TextLo,
                     fontSize = 13.sp, fontWeight = FontWeight.SemiBold,
                     fontFamily = GeistFamily,
                 )

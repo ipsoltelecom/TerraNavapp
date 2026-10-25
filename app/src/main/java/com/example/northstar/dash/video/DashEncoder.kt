@@ -11,9 +11,9 @@ import android.view.Surface
 
 /**
  * MediaCodec H.264 encoder for the Tripper Dash stream:
- *   526 × 300, up to 24 fps, ~1.2 Mbps, Baseline L4.1, 1-second IDR interval.
+ *   526 × 300, up to 24 fps, 0.6–2.4 Mbps, Baseline L4.1, 1-second IDR interval.
  *
- * [FPS] is the MAX/hint rate — the frame loop feeds ~24 fps while moving (buttery,
+ * The selected profile sets the MAX/hint rate — the frame loop feeds ~24 fps while moving (buttery,
  * Android-Auto-style motion) and throttles to a few fps when stopped to save power.
  * The hardware encoder auto-timestamps each frame from the input surface, so the
  * variable feed rate is fine. Tiny resolution → still far under the OLED-projection
@@ -25,12 +25,13 @@ import android.view.Surface
  *
  * @param onEncodedData  called with (annexBBytes, isKeyFrame) for each output buffer.
  */
-class DashEncoder(private val onEncodedData: (ByteArray, Boolean) -> Unit) {
+class DashEncoder(
+    private val quality: com.example.northstar.settings.StreamQuality,
+    private val onEncodedData: (ByteArray, Boolean) -> Unit,
+) {
     companion object {
         const val WIDTH   = 526
         const val HEIGHT  = 300
-        const val FPS     = 24
-        const val BITRATE = 1_200_000
         private const val MIME = MediaFormat.MIMETYPE_VIDEO_AVC
         private const val DRAIN_TIMEOUT_US = 10_000L
         private const val TAG = "DashEncoder"
@@ -43,8 +44,8 @@ class DashEncoder(private val onEncodedData: (ByteArray, Boolean) -> Unit) {
         val format = MediaFormat.createVideoFormat(MIME, WIDTH, HEIGHT).apply {
             setInteger(MediaFormat.KEY_COLOR_FORMAT,
                 MediaCodecInfo.CodecCapabilities.COLOR_FormatSurface)
-            setInteger(MediaFormat.KEY_BIT_RATE, BITRATE)
-            setInteger(MediaFormat.KEY_FRAME_RATE, FPS)
+            setInteger(MediaFormat.KEY_BIT_RATE, quality.bitrate)
+            setInteger(MediaFormat.KEY_FRAME_RATE, quality.movingFps)
             setInteger(MediaFormat.KEY_I_FRAME_INTERVAL, 1)
             setInteger(MediaFormat.KEY_PROFILE,
                 MediaCodecInfo.CodecProfileLevel.AVCProfileBaseline)

@@ -1,5 +1,7 @@
 package com.example.northstar.viewmodel
 
+import com.example.northstar.settings.L10n
+import com.example.northstar.R
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
@@ -35,7 +37,7 @@ class AuthViewModel : ViewModel() {
     init { runCatching { _state.value = signedInState() } }
 
     fun signInWithGoogle(idToken: String) {
-        val a = auth ?: run { _state.value = _state.value.copy(error = "Sync not configured", syncAvailable = false); return }
+        val a = auth ?: run { _state.value = _state.value.copy(error = L10n.text(R.string.sync_unconfigured), syncAvailable = false); return }
         _state.value = AuthState(loading = true)
         viewModelScope.launch {
             runCatching {
@@ -43,7 +45,7 @@ class AuthViewModel : ViewModel() {
                 a.signInWithCredential(credential).await()
                 _state.value = signedInState()
             }.onFailure { e ->
-                _state.value = AuthState(error = e.message ?: "Sign-in failed")
+                _state.value = AuthState(error = e.message ?: L10n.text(R.string.signin_failed))
             }
         }
     }

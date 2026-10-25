@@ -1,5 +1,7 @@
 package com.example.northstar.ui.screens
 
+import com.example.northstar.settings.L10n
+import com.example.northstar.R
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
@@ -98,7 +100,7 @@ fun DashScreen(vm: DashViewModel = viewModel()) {
 
     val streaming = ui.stage == ConnStage.STREAMING
 
-    // Auto-connect on opening the Dash screen, so the rider doesn't tap "Connect" every
+    // Auto-connect on opening the Dash screen, so the rider doesn't tap L10n.text(R.string.ui_b65463cb6a42) every
     // ride — just open the app. Fires once; if the dash is off it errors out quietly and
     // the rider can retry. (Needs permissions already granted from a prior run.)
     // rememberSaveable so a config change (rotation/theme) doesn't reset this and silently
@@ -119,8 +121,8 @@ fun DashScreen(vm: DashViewModel = viewModel()) {
             .padding(bottom = 24.dp),
     ) {
         ScreenHeader(
-            eyebrow = "What the rider sees",
-            title = "Dash view",
+            eyebrow = L10n.text(R.string.ui_1b9ff48eb62a),
+            title = L10n.text(R.string.ui_6124e4744a01),
             trailing = {
                 Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                     if (streaming && ui.thermal != "OK") {
@@ -130,11 +132,11 @@ fun DashScreen(vm: DashViewModel = viewModel()) {
                         )
                     }
                     when (ui.stage) {
-                        ConnStage.STREAMING -> TerraNavChip("LIVE", ChipTone.Gold, dot = true)
+                        ConnStage.STREAMING -> TerraNavChip(L10n.text(R.string.ui_6990f01ad9d2), ChipTone.Gold, dot = true)
                         ConnStage.WIFI,
-                        ConnStage.AUTH      -> TerraNavChip("Connecting…", ChipTone.Neutral)
-                        ConnStage.ERROR     -> TerraNavChip("Error", ChipTone.Alert)
-                        ConnStage.OFFLINE   -> TerraNavChip("Offline", ChipTone.Off)
+                        ConnStage.AUTH      -> TerraNavChip(L10n.text(R.string.ui_fd3e79699426), ChipTone.Neutral)
+                        ConnStage.ERROR     -> TerraNavChip(L10n.text(R.string.ui_7f2f6a15cf8d), ChipTone.Alert)
+                        ConnStage.OFFLINE   -> TerraNavChip(L10n.text(R.string.ui_e01fa717bacc), ChipTone.Off)
                     }
                 }
             },
@@ -151,20 +153,20 @@ fun DashScreen(vm: DashViewModel = viewModel()) {
                     Column(Modifier.weight(1f).padding(end = 12.dp)) {
                         Text(
                             when (ui.stage) {
-                                ConnStage.OFFLINE -> "Connect to Tripper Dash"
-                                ConnStage.WIFI    -> "Joining ${ui.ssid}…"
-                                ConnStage.AUTH    -> "Authenticating with dash…"
-                                ConnStage.ERROR   -> "Connection failed"
-                                ConnStage.STREAMING -> "Streaming"
+                                ConnStage.OFFLINE -> L10n.text(R.string.ui_978df99d7b61)
+                                ConnStage.WIFI    -> L10n.text(R.string.ui_609171f741be, ui.ssid)
+                                ConnStage.AUTH    -> L10n.text(R.string.ui_b0ecbc1fd672)
+                                ConnStage.ERROR   -> L10n.text(R.string.ui_202caaa87055)
+                                ConnStage.STREAMING -> L10n.text(R.string.ui_1e8325521df6)
                             },
                             color = TextHi, fontSize = 14.sp, fontWeight = FontWeight.SemiBold,
                         )
                         Text(
                             when (ui.stage) {
-                                ConnStage.OFFLINE -> "WiFi + handshake + stream, one tap"
-                                ConnStage.WIFI    -> "Accept the system dialog if it appears"
-                                ConnStage.AUTH    -> "Handshaking with firmware 11.63…"
-                                ConnStage.ERROR   -> ui.errorMessage ?: "See Logcat tag DashSession"
+                                ConnStage.OFFLINE -> L10n.text(R.string.ui_bef44beb3a4b)
+                                ConnStage.WIFI    -> L10n.text(R.string.ui_f36c02c2a71d)
+                                ConnStage.AUTH    -> L10n.text(R.string.ui_d7571dddf79d)
+                                ConnStage.ERROR   -> ui.errorMessage ?: L10n.text(R.string.ui_2ed947b876cd)
                                 ConnStage.STREAMING -> ""
                             },
                             color = if (ui.stage == ConnStage.ERROR) Warn else TextMid,
@@ -174,7 +176,7 @@ fun DashScreen(vm: DashViewModel = viewModel()) {
                     }
                     if (ui.stage == ConnStage.OFFLINE || ui.stage == ConnStage.ERROR) {
                         TerraNavBtn(
-                            "Connect",
+                            L10n.text(R.string.ui_b65463cb6a42),
                             onClick = {
                                 if (hasEssentialPermissions()) vm.connect()
                                 else permissionLauncher.launch(requestedPermissions)
@@ -185,7 +187,7 @@ fun DashScreen(vm: DashViewModel = viewModel()) {
                         )
                     } else {
                         TerraNavBtn(
-                            "Cancel",
+                            L10n.text(R.string.ui_77dfd2135f4d),
                             onClick = { vm.disconnect() },
                             variant = BtnVariant.Ghost,
                             size = BtnSize.Sm,
@@ -195,13 +197,13 @@ fun DashScreen(vm: DashViewModel = viewModel()) {
                 if (ui.frameCount > 0) {
                     Spacer(Modifier.height(8.dp))
                     Text(
-                        "Frames encoded: ${ui.frameCount}",
+                        L10n.text(R.string.ui_d4ee94174862, ui.frameCount),
                         color = TextLo, fontSize = 11.sp, fontFamily = GeistMonoFamily,
                     )
                 }
                 ui.lastButton?.let { btn ->
                     Text(
-                        "Joystick: $btn",
+                        L10n.text(R.string.ui_4a835efcadb9, btn),
                         color = Gold, fontSize = 11.sp, fontFamily = GeistMonoFamily,
                         modifier = Modifier.padding(top = 4.dp),
                     )
@@ -257,7 +259,7 @@ fun DashScreen(vm: DashViewModel = viewModel()) {
                 Icon(TerraNavIcons.Navi, null, tint = if (ui.offRoute) Warn else Gold, modifier = Modifier.size(20.dp))
                 Spacer(Modifier.width(11.dp))
                 Text(
-                    if (ui.offRoute) "Off route — rerouting…" else mv,
+                    if (ui.offRoute) L10n.text(R.string.ui_89e9d55725ef) else mv,
                     color = TextHi, fontSize = 13.5.sp, fontWeight = FontWeight.SemiBold,
                 )
             }
@@ -269,10 +271,10 @@ fun DashScreen(vm: DashViewModel = viewModel()) {
             listOf(
                 Triple(
                     ui.remainingKm?.let { if (it >= 10) "%.0f".format(it) else "%.1f".format(it) } ?: "—",
-                    if (ui.remainingKm != null) "km" else "", "Remaining",
+                    if (ui.remainingKm != null) "km" else "", L10n.text(R.string.ui_cc632b5e2fd2),
                 ),
-                Triple(ui.etaMinutes?.toString() ?: "—", if (ui.etaMinutes != null) "min" else "", "ETA"),
-                Triple("z${ui.mapZoom}", "", "Zoom"),
+                Triple(ui.etaMinutes?.toString() ?: "—", if (ui.etaMinutes != null) "min" else "", L10n.text(R.string.ui_3044d4f6c438)),
+                Triple("z${ui.mapZoom}", "", L10n.text(R.string.ui_9b3cbed5c490)),
             ).forEach { (v, u, k) ->
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -312,8 +314,8 @@ fun DashScreen(vm: DashViewModel = viewModel()) {
                 Icon(TerraNavIcons.Cross, null, tint = if (adjustMode) Gold else TextMid, modifier = Modifier.size(20.dp))
                 Spacer(Modifier.width(11.dp))
                 Column {
-                    Text("Map adjust mode", color = TextHi, fontSize = 14.sp, fontWeight = FontWeight.SemiBold, fontFamily = GeistFamily)
-                    Text("Mirrors the bike joystick", color = TextLo, fontSize = 11.5.sp, modifier = Modifier.padding(top = 1.dp))
+                    Text(L10n.text(R.string.ui_274ab436400f), color = TextHi, fontSize = 14.sp, fontWeight = FontWeight.SemiBold, fontFamily = GeistFamily)
+                    Text(L10n.text(R.string.ui_28a8bb77bac8), color = TextLo, fontSize = 11.5.sp, modifier = Modifier.padding(top = 1.dp))
                 }
             }
             TerraNavToggle(on = adjustMode, onChange = { adjustMode = it })
@@ -336,8 +338,8 @@ fun DashScreen(vm: DashViewModel = viewModel()) {
                 Icon(TerraNavIcons.Navi, null, tint = if (ui.headingUp) Gold else TextMid, modifier = Modifier.size(20.dp))
                 Spacer(Modifier.width(11.dp))
                 Column {
-                    Text("Heading-up map", color = TextHi, fontSize = 14.sp, fontWeight = FontWeight.SemiBold, fontFamily = GeistFamily)
-                    Text(if (ui.headingUp) "Rotates to travel direction" else "North-up", color = TextLo, fontSize = 11.5.sp, modifier = Modifier.padding(top = 1.dp))
+                    Text(L10n.text(R.string.ui_05d38d0a9d26), color = TextHi, fontSize = 14.sp, fontWeight = FontWeight.SemiBold, fontFamily = GeistFamily)
+                    Text(if (ui.headingUp) L10n.text(R.string.ui_7e0226ebca47) else L10n.text(R.string.ui_44c278fd4cd2), color = TextLo, fontSize = 11.5.sp, modifier = Modifier.padding(top = 1.dp))
                 }
             }
             TerraNavToggle(on = ui.headingUp, onChange = { vm.toggleHeadingUp() })
@@ -365,7 +367,7 @@ fun DashScreen(vm: DashViewModel = viewModel()) {
                     onMove = { v -> joystickVelocity = if (adjustMode) v else Offset.Zero },
                 )
                 Spacer(Modifier.height(9.dp))
-                Eyebrow("Pan")
+                Eyebrow(L10n.text(R.string.ui_8c9ce33191cd))
             }
 
             Column(
@@ -383,7 +385,7 @@ fun DashScreen(vm: DashViewModel = viewModel()) {
         if (streaming && ui.destinationName != null) {
             Spacer(Modifier.height(16.dp))
             TerraNavBtn(
-                "Exit navigation",
+                L10n.text(R.string.ui_c7e1bc25ed57),
                 onClick = { vm.exitNavigation() },
                 icon = TerraNavIcons.Navi,
                 variant = BtnVariant.Ghost,
@@ -396,7 +398,7 @@ fun DashScreen(vm: DashViewModel = viewModel()) {
         if (streaming) {
             Spacer(Modifier.height(20.dp))
             TerraNavBtn(
-                "Disconnect",
+                L10n.text(R.string.ui_ed28e0686e12),
                 onClick = { vm.disconnect() },
                 icon = TerraNavIcons.Power,
                 variant = BtnVariant.Danger,

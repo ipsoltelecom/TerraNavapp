@@ -11,7 +11,7 @@ data class RoadSnapshot(
     val fetchedAt: Long = 0,
     val features: List<RoadFeature> = emptyList(),
     val ways: List<RoadWay> = emptyList(),
-    val status: String = "Aguardando posição · dados OSM",
+    val status: String = "Waiting for location · OSM data",
 ) {
     fun covers(point: GeoPoint, now: Long) = center?.let {
         now - fetchedAt in 0..86_400_000L && GeoPoint.distMeters(it, point) < 1800

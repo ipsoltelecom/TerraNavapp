@@ -1,5 +1,7 @@
 package com.example.northstar.dash.map
 
+import com.example.northstar.settings.L10n
+import com.example.northstar.R
 import android.content.Context
 import android.location.Location
 import android.net.ConnectivityManager
@@ -62,7 +64,7 @@ class RoadInfoRepository private constructor(context: Context) {
         busy = true
         lastRequest = SystemClock.elapsedRealtime()
         scope.launch {
-            _state.value = old.copy(status = "Buscando dados OSM da região…")
+            _state.value = old.copy(status = L10n.text(R.string.ui_f87cf68a9cbf))
             var conn: HttpURLConnection? = null
             try {
                 // Include roads WITHOUT maxspeed so adjacent unknown roads cannot be mistaken for known ones.
@@ -97,7 +99,7 @@ class RoadInfoRepository private constructor(context: Context) {
             } catch (e: CancellationException) { throw e
             } catch (_: Exception) {
                 endpointIndex = (endpointIndex + 1) % 2
-                _state.value = old.copy(status = if(old.covers(point,System.currentTimeMillis())) "Usando dados OSM em cache" else "Dados da via indisponíveis · tente com internet")
+                _state.value = old.copy(status = if(old.covers(point,System.currentTimeMillis())) L10n.text(R.string.ui_f33c92bf5593) else L10n.text(R.string.ui_592feddbc10a))
             } finally { conn?.disconnect(); synchronized(this@RoadInfoRepository) { busy = false } }
         }
     }
@@ -116,7 +118,7 @@ class RoadInfoRepository private constructor(context: Context) {
                 ways += RoadWay(e.getLong("id"),points,tags)
             }
         }
-        return RoadSnapshot(center,at,features,ways,"Dados OSM · cobertura variável")
+        return RoadSnapshot(center,at,features,ways,L10n.text(R.string.ui_d17d7711679c))
     }
     companion object {
         @Volatile private var instance: RoadInfoRepository? = null

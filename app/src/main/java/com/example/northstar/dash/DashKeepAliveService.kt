@@ -1,5 +1,6 @@
 package com.example.northstar.dash
 
+import com.example.northstar.settings.L10n
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -122,8 +123,8 @@ class DashKeepAliveService : Service() {
         if (nm.getNotificationChannel(CHANNEL_ID) == null) {
             nm.createNotificationChannel(
                 NotificationChannel(
-                    CHANNEL_ID, "Dash streaming", NotificationManager.IMPORTANCE_LOW
-                ).apply { description = "Keeps the map streaming to the Tripper Dash" }
+                    CHANNEL_ID, L10n.text(R.string.ui_709e73359bac), NotificationManager.IMPORTANCE_LOW
+                ).apply { description = L10n.text(R.string.ui_24df69f0356a) }
             )
         }
     }
@@ -141,8 +142,8 @@ class DashKeepAliveService : Service() {
             @Suppress("DEPRECATION") Notification.Builder(this)
 
         return builder
-            .setContentTitle("TerraNav — streaming to dash")
-            .setContentText("Map is live on the Tripper. Screen can stay off.")
+            .setContentTitle(L10n.text(R.string.ui_f5757a314ad6))
+            .setContentText(L10n.text(R.string.ui_4f5f50e9679b))
             .setSmallIcon(R.drawable.terranav_notification)
             .setOngoing(true)
             .setContentIntent(open)

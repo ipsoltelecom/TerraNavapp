@@ -1,5 +1,7 @@
 package com.example.northstar.ui.screens
 
+import com.example.northstar.settings.L10n
+import com.example.northstar.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -32,7 +34,7 @@ fun SettingsScreen(
     onBack: () -> Unit,
 ) {
     val auth by authViewModel.state.collectAsState()
-    val email = auth.email ?: "Not signed in"
+    val email = auth.email ?: L10n.text(R.string.ui_848d80ca32cf)
     val initials = remember(auth.email, auth.displayName) {
         val src = auth.displayName?.takeIf { it.isNotBlank() } ?: auth.email ?: "?"
         src.split(" ", ".", "@").filter { it.isNotBlank() }.take(2).joinToString("") { it.first().uppercase() }.ifBlank { "?" }
@@ -45,6 +47,9 @@ fun SettingsScreen(
 
     // Real voice setting, shared with RouteScreen via the VoiceManager singleton.
     val ctx = LocalContext.current
+    val appSettings = remember { com.example.northstar.settings.AppSettings.get(ctx) }
+    val language by appSettings.language.collectAsState()
+    val quality by appSettings.quality.collectAsState()
     val mapPreferences = remember { com.example.northstar.dash.map.MapPreferences.get(ctx) }
     val nightMap by mapPreferences.night.collectAsState()
     val voiceManager = remember { com.example.northstar.dash.nav.VoiceManager.get(ctx) }
@@ -62,7 +67,15 @@ fun SettingsScreen(
             .padding(18.dp)
             .padding(bottom = 24.dp),
     ) {
-        ScreenHeader(title = "Settings", onBack = onBack)
+        ScreenHeader(title = L10n.text(R.string.ui_c7f73bb54d92), onBack = onBack)
+
+        SectionLabel(L10n.text(R.string.ui_89b86ab0e66f))
+        TerraNavCard(modifier = Modifier.fillMaxWidth(),padding = 14.dp) {
+            TerraNavSegmented(com.example.northstar.settings.AppLanguage.entries.map { it.label },language.label, { label ->
+                appSettings.setLanguage(com.example.northstar.settings.AppLanguage.entries.first { it.label == label })
+            },Modifier.fillMaxWidth())
+        }
+        Spacer(Modifier.height(16.dp))
 
         UpdateCard()
         Spacer(Modifier.height(16.dp))
@@ -89,41 +102,53 @@ fun SettingsScreen(
             }
         }
 
-        SectionLabel("Mapa e informações da via")
+        SectionLabel(L10n.text(R.string.ui_e00c87d1cf55))
         TerraNavCard(modifier = Modifier.fillMaxWidth(), padding = 14.dp) {
-            Text("Modo do mapa · celular e moto", color = TextHi)
+            Text(L10n.text(R.string.ui_02e64b7a40b5), color = TextHi)
             Spacer(Modifier.height(10.dp))
             TerraNavSegmented(listOf("Dia", "Noite"), if (nightMap) "Noite" else "Dia", {
                 mapPreferences.setNight(it == "Noite")
             }, Modifier.fillMaxWidth())
             Spacer(Modifier.height(12.dp))
-            Text("Semáforos e radares fixos cadastrados. Limite em km/h somente quando identificado na via. Cobertura variável; sem indicação da cor do semáforo e sem acidentes ou obras em tempo real.", color = TextMid, fontSize = 12.sp)
-            Text("Dados © OpenStreetMap contributors · ODbL\nConsulta da região via Overpass com internet.", color = TextLo, fontSize = 11.sp)
+            Text(L10n.text(R.string.ui_c9384f83fdd4), color = TextMid, fontSize = 12.sp)
+            Text(L10n.text(R.string.ui_2977e6dd5998), color = TextLo, fontSize = 11.sp)
         }
 
-        SectionLabel("Connection")
+        SectionLabel(L10n.text(R.string.ui_6512ee1541e9))
         TerraNavCard(modifier = Modifier.fillMaxWidth(), padding = 6.dp) {
             SettingRow(TerraNavIcons.Bt, "Tripper Dash",
-                sub = when (conn) { ConnectionState.Connected -> "Connected"; ConnectionState.Searching -> "Connecting…"; ConnectionState.Offline -> "Not connected" },
-                control = { TerraNavChip(if (conn == ConnectionState.Connected) "Linked" else "Off", if (conn == ConnectionState.Connected) ChipTone.Gold else ChipTone.Off, dot = true) })
+                sub = when (conn) { ConnectionState.Connected -> L10n.text(R.string.ui_c2f9b7b4897f); ConnectionState.Searching -> L10n.text(R.string.ui_fd3e79699426); ConnectionState.Offline -> L10n.text(R.string.ui_8b02f3de3906) },
+                control = { TerraNavChip(if (conn == ConnectionState.Connected) L10n.text(R.string.ui_a089f600e3d2) else "Off", if (conn == ConnectionState.Connected) ChipTone.Gold else ChipTone.Off, dot = true) })
             TerraNavDivider(Modifier.padding(horizontal = 6.dp))
-            SettingRow(TerraNavIcons.Sync, "Auto-connect on start", "Link when the bike is near",
+            SettingRow(TerraNavIcons.Sync, L10n.text(R.string.ui_b26ea400ee1e), L10n.text(R.string.ui_4252ae92ebb4),
                 control = { TerraNavToggle(autoConnect) { autoConnect = it } })
-            TerraNavDivider(Modifier.padding(horizontal = 6.dp))
-            SettingRow(TerraNavIcons.Zap, "Stream quality", "Balanced · saves battery",
-                control = { Icon(TerraNavIcons.ChevronRight, null, tint = TextLo, modifier = Modifier.size(18.dp)) }, last = true)
         }
 
-        SectionLabel("During a ride")
+        SectionLabel(L10n.text(R.string.ui_68b0ab5b1850))
+        TerraNavCard(modifier = Modifier.fillMaxWidth(),padding = 14.dp) {
+            val labels = listOf("Economy", "Balanced", "High")
+            TerraNavSegmented(labels,labels[quality.ordinal], { label ->
+                appSettings.setQuality(com.example.northstar.settings.StreamQuality.entries[labels.indexOf(label)])
+            },Modifier.fillMaxWidth())
+            Spacer(Modifier.height(10.dp))
+            Text(when(quality) {
+                com.example.northstar.settings.StreamQuality.ECONOMY -> L10n.text(R.string.ui_ee155a54ab07)
+                com.example.northstar.settings.StreamQuality.BALANCED -> L10n.text(R.string.ui_72afc2a59cd5)
+                com.example.northstar.settings.StreamQuality.HIGH -> L10n.text(R.string.ui_0dbbff281a01)
+            },color = TextMid,fontSize = 12.sp)
+            Text(L10n.text(R.string.ui_e6e9167a278a),color = TextLo,fontSize = 12.sp)
+        }
+
+        SectionLabel(L10n.text(R.string.ui_f43f9cbb198f))
         TerraNavCard(modifier = Modifier.fillMaxWidth(), padding = 6.dp) {
-            SettingRow(TerraNavIcons.Power, "Turn phone screen off", "Map keeps streaming to the dash",
+            SettingRow(TerraNavIcons.Power, L10n.text(R.string.ui_24158c113d59), L10n.text(R.string.ui_f3205d7e31c3),
                 control = { TerraNavToggle(screenOff) { screenOff = it } })
             TerraNavDivider(Modifier.padding(horizontal = 6.dp))
-            SettingRow(TerraNavIcons.Dash, "Keep dash awake", "Prevent Tripper sleep",
+            SettingRow(TerraNavIcons.Dash, L10n.text(R.string.ui_6ac5e6f53a72), L10n.text(R.string.ui_0bda22782d81),
                 control = { TerraNavToggle(keepAwake) { keepAwake = it } }, last = true)
         }
 
-        SectionLabel("Voice & guidance")
+        SectionLabel(L10n.text(R.string.ui_d0778ab42a66))
         TerraNavCard(modifier = Modifier.fillMaxWidth(), padding = 14.dp) {
             TerraNavSegmented(listOf("Off", "Chime", "Full TTS"), voice, {
                 voiceManager.setMode(when (it) {
@@ -134,17 +159,17 @@ fun SettingsScreen(
             }, Modifier.fillMaxWidth())
         }
 
-        SectionLabel("Units")
+        SectionLabel(L10n.text(R.string.ui_12748281e0f0))
         TerraNavCard(modifier = Modifier.fillMaxWidth(), padding = 14.dp) {
             TerraNavSegmented(listOf("Kilometres", "Miles"), units, { units = it }, Modifier.fillMaxWidth())
         }
 
-        SectionLabel("Sync")
+        SectionLabel(L10n.text(R.string.ui_905f63092ff2))
         TerraNavCard(modifier = Modifier.fillMaxWidth(), padding = 6.dp) {
             val (syncTitle, syncSub) = when {
-                !auth.syncAvailable -> "Local only" to "Add your own Firebase project to sync across devices"
-                auth.isSignedIn     -> "Synced" to (auth.email ?: "Signed in")
-                else                -> "Not signed in" to "Sign in to sync across devices · data stays local until then"
+                !auth.syncAvailable -> L10n.text(R.string.ui_dd2a30568400) to L10n.text(R.string.ui_b41d6b8adedf)
+                auth.isSignedIn     -> L10n.text(R.string.ui_b2ef6af67fe0) to (auth.email ?: L10n.text(R.string.ui_1b6c524ffb71))
+                else                -> L10n.text(R.string.ui_848d80ca32cf) to L10n.text(R.string.ui_c145743af88f)
             }
             SettingRow(TerraNavIcons.Sync, syncTitle, syncSub,
                 control = {
@@ -159,7 +184,7 @@ fun SettingsScreen(
 
         if (auth.isSignedIn) {
             TerraNavBtn(
-                "Sign out",
+                L10n.text(R.string.ui_dc1649a16c14),
                 onClick = { authViewModel.signOut(); onSignedOut() },
                 icon = TerraNavIcons.Power,
                 variant = BtnVariant.Danger,
@@ -170,7 +195,7 @@ fun SettingsScreen(
         }
 
         Text(
-            "TERRANAV ${com.example.northstar.update.AppUpdater.get(ctx).installedName} · ${if (!auth.syncAvailable) "local only" else if (auth.isSignedIn) "sync on" else "sync off"}",
+            "TERRANAV ${com.example.northstar.update.AppUpdater.get(ctx).installedName} · ${if (!auth.syncAvailable) L10n.text(R.string.ui_c7ac183be49f) else if (auth.isSignedIn) L10n.text(R.string.ui_9200a84eb7b5) else L10n.text(R.string.ui_4bfdea6ff4dd)}",
             color = TextDis, fontSize = 11.sp, fontFamily = GeistMonoFamily,
             modifier = Modifier.align(Alignment.CenterHorizontally).padding(top = 10.dp),
         )

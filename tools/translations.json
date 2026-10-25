@@ -1,0 +1,1282 @@
+{
+  "ui_89b86ab0e66f": {
+    "source": "Language",
+    "en": "Language",
+    "pt-BR": "Idioma"
+  },
+  "ui_c7f73bb54d92": {
+    "source": "Settings",
+    "en": "Settings",
+    "pt-BR": "Configurações"
+  },
+  "ui_70f8bb9a8a53": {
+    "source": "Home",
+    "en": "Home",
+    "pt-BR": "Início"
+  },
+  "ui_4999528efe0f": {
+    "source": "Route",
+    "en": "Route",
+    "pt-BR": "Rota"
+  },
+  "ui_24942523bd10": {
+    "source": "Dash",
+    "en": "Dash",
+    "pt-BR": "Painel"
+  },
+  "ui_f614ac324abb": {
+    "source": "Garage",
+    "en": "Garage",
+    "pt-BR": "Garagem"
+  },
+  "ui_ae849605d14c": {
+    "source": "Rides",
+    "en": "Rides",
+    "pt-BR": "Viagens"
+  },
+  "ui_b65463cb6a42": {
+    "source": "Connect",
+    "en": "Connect",
+    "pt-BR": "Conectar"
+  },
+  "ui_c2f9b7b4897f": {
+    "source": "Connected",
+    "en": "Connected",
+    "pt-BR": "Conectado"
+  },
+  "ui_8b02f3de3906": {
+    "source": "Not connected",
+    "en": "Not connected",
+    "pt-BR": "Desconectado"
+  },
+  "ui_e01fa717bacc": {
+    "source": "Offline",
+    "en": "Offline",
+    "pt-BR": "Desconectado"
+  },
+  "ui_fd3e79699426": {
+    "source": "Connecting…",
+    "en": "Connecting…",
+    "pt-BR": "Conectando…"
+  },
+  "ui_7f2f6a15cf8d": {
+    "source": "Error",
+    "en": "Error",
+    "pt-BR": "Erro"
+  },
+  "ui_6990f01ad9d2": {
+    "source": "LIVE",
+    "en": "LIVE",
+    "pt-BR": "AO VIVO"
+  },
+  "ui_63e49827e493": {
+    "source": "Warm",
+    "en": "Warm",
+    "pt-BR": "Aquecido"
+  },
+  "ui_1b9ff48eb62a": {
+    "source": "What the rider sees",
+    "en": "What the rider sees",
+    "pt-BR": "O que o piloto vê"
+  },
+  "ui_6124e4744a01": {
+    "source": "Dash view",
+    "en": "Dash view",
+    "pt-BR": "Visão do painel"
+  },
+  "ui_978df99d7b61": {
+    "source": "Connect to Tripper Dash",
+    "en": "Connect to Tripper Dash",
+    "pt-BR": "Conectar ao Tripper Dash"
+  },
+  "ui_b0ecbc1fd672": {
+    "source": "Authenticating with dash…",
+    "en": "Authenticating with dash…",
+    "pt-BR": "Autenticando no painel…"
+  },
+  "ui_202caaa87055": {
+    "source": "Connection failed",
+    "en": "Connection failed",
+    "pt-BR": "Falha na conexão"
+  },
+  "ui_1e8325521df6": {
+    "source": "Streaming",
+    "en": "Streaming",
+    "pt-BR": "Transmitindo"
+  },
+  "ui_bef44beb3a4b": {
+    "source": "WiFi + handshake + stream, one tap",
+    "en": "WiFi + handshake + stream, one tap",
+    "pt-BR": "Wi-Fi, conexão e transmissão em um toque"
+  },
+  "ui_f36c02c2a71d": {
+    "source": "Accept the system dialog if it appears",
+    "en": "Accept the system dialog if it appears",
+    "pt-BR": "Aceite a solicitação do Android, se aparecer"
+  },
+  "ui_d7571dddf79d": {
+    "source": "Handshaking with firmware 11.63…",
+    "en": "Handshaking with firmware 11.63…",
+    "pt-BR": "Conectando ao firmware 11.63…"
+  },
+  "ui_2ed947b876cd": {
+    "source": "See Logcat tag DashSession",
+    "en": "See Logcat tag DashSession",
+    "pt-BR": "Consulte o registro DashSession"
+  },
+  "ui_77dfd2135f4d": {
+    "source": "Cancel",
+    "en": "Cancel",
+    "pt-BR": "Cancelar"
+  },
+  "ui_89e9d55725ef": {
+    "source": "Off route — rerouting…",
+    "en": "Off route — rerouting…",
+    "pt-BR": "Fora da rota — recalculando…"
+  },
+  "ui_cc632b5e2fd2": {
+    "source": "Remaining",
+    "en": "Remaining",
+    "pt-BR": "Restante"
+  },
+  "ui_3044d4f6c438": {
+    "source": "ETA",
+    "en": "ETA",
+    "pt-BR": "Chegada"
+  },
+  "ui_9b3cbed5c490": {
+    "source": "Zoom",
+    "en": "Zoom",
+    "pt-BR": "Zoom"
+  },
+  "ui_274ab436400f": {
+    "source": "Map adjust mode",
+    "en": "Map adjust mode",
+    "pt-BR": "Ajustar mapa"
+  },
+  "ui_28a8bb77bac8": {
+    "source": "Mirrors the bike joystick",
+    "en": "Mirrors the bike joystick",
+    "pt-BR": "Acompanha o joystick da moto"
+  },
+  "ui_05d38d0a9d26": {
+    "source": "Heading-up map",
+    "en": "Heading-up map",
+    "pt-BR": "Mapa na direção da viagem"
+  },
+  "ui_7e0226ebca47": {
+    "source": "Rotates to travel direction",
+    "en": "Rotates to travel direction",
+    "pt-BR": "Gira na direção do movimento"
+  },
+  "ui_44c278fd4cd2": {
+    "source": "North-up",
+    "en": "North-up",
+    "pt-BR": "Norte para cima"
+  },
+  "ui_8c9ce33191cd": {
+    "source": "Pan",
+    "en": "Pan",
+    "pt-BR": "Mover"
+  },
+  "ui_c7e1bc25ed57": {
+    "source": "Exit navigation",
+    "en": "Exit navigation",
+    "pt-BR": "Encerrar navegação"
+  },
+  "ui_ed28e0686e12": {
+    "source": "Disconnect",
+    "en": "Disconnect",
+    "pt-BR": "Desconectar"
+  },
+  "ui_8ca2cb929002": {
+    "source": "Odometer",
+    "en": "Odometer",
+    "pt-BR": "Hodômetro"
+  },
+  "ui_94de303bbef8": {
+    "source": "Maintenance",
+    "en": "Maintenance",
+    "pt-BR": "Manutenção"
+  },
+  "ui_310c39ac13fa": {
+    "source": "Fuel diary",
+    "en": "Fuel diary",
+    "pt-BR": "Abastecimentos"
+  },
+  "ui_83922b9c177f": {
+    "source": "Most urgent",
+    "en": "Most urgent",
+    "pt-BR": "Mais urgente"
+  },
+  "ui_471eb94ac9f9": {
+    "source": "Mark done today",
+    "en": "Mark done today",
+    "pt-BR": "Marcar como feito hoje"
+  },
+  "ui_4cf8d44a4fee": {
+    "source": "Service intervals",
+    "en": "Service intervals",
+    "pt-BR": "Intervalos de manutenção"
+  },
+  "ui_371b614b9104": {
+    "source": "No intervals yet — add one below.",
+    "en": "No intervals yet — add one below.",
+    "pt-BR": "Nenhum intervalo cadastrado. Adicione um abaixo."
+  },
+  "ui_01ebfb7fd850": {
+    "source": "Log a service",
+    "en": "Log a service",
+    "pt-BR": "Registrar manutenção"
+  },
+  "ui_efc578c58e04": {
+    "source": "Add interval",
+    "en": "Add interval",
+    "pt-BR": "Adicionar intervalo"
+  },
+  "ui_b0699b5d1f83": {
+    "source": "Avg. efficiency · 30 days",
+    "en": "Avg. efficiency · 30 days",
+    "pt-BR": "Consumo médio · 30 dias"
+  },
+  "ui_76854ee883db": {
+    "source": "Spent · 30 days",
+    "en": "Spent · 30 days",
+    "pt-BR": "Gastos · 30 dias"
+  },
+  "ui_b52229c807cf": {
+    "source": "Fill-ups",
+    "en": "Fill-ups",
+    "pt-BR": "Abastecimentos"
+  },
+  "ui_d064ebf2cec2": {
+    "source": "No fill-ups yet — add your first below.",
+    "en": "No fill-ups yet — add your first below.",
+    "pt-BR": "Nenhum abastecimento. Adicione o primeiro abaixo."
+  },
+  "ui_486f10a2685e": {
+    "source": "Add fill-up",
+    "en": "Add fill-up",
+    "pt-BR": "Adicionar abastecimento"
+  },
+  "ui_61cc55aa0453": {
+    "source": "Add",
+    "en": "Add",
+    "pt-BR": "Adicionar"
+  },
+  "ui_92517c7185b4": {
+    "source": "Litres",
+    "en": "Litres",
+    "pt-BR": "Litros"
+  },
+  "ui_255a32093d6b": {
+    "source": "Cost (₹)",
+    "en": "Cost (₹)",
+    "pt-BR": "Custo (₹)"
+  },
+  "ui_6a1f9fb704ab": {
+    "source": "Odometer (km)",
+    "en": "Odometer (km)",
+    "pt-BR": "Hodômetro (km)"
+  },
+  "ui_b08ded404a8c": {
+    "source": "Location (optional)",
+    "en": "Location (optional)",
+    "pt-BR": "Local (opcional)"
+  },
+  "ui_709a23220f2c": {
+    "source": "Name",
+    "en": "Name",
+    "pt-BR": "Nome"
+  },
+  "ui_a9426d33f02c": {
+    "source": "Interval (km)",
+    "en": "Interval (km)",
+    "pt-BR": "Intervalo (km)"
+  },
+  "ui_716f63b96e0c": {
+    "source": "Icon",
+    "en": "Icon",
+    "pt-BR": "Ícone"
+  },
+  "ui_bbfa773e5a63": {
+    "source": "Close",
+    "en": "Close",
+    "pt-BR": "Fechar"
+  },
+  "ui_6baa6287639c": {
+    "source": "Mark a service done",
+    "en": "Mark a service done",
+    "pt-BR": "Registrar serviço realizado"
+  },
+  "ui_e9b450d14bc2": {
+    "source": "Done",
+    "en": "Done",
+    "pt-BR": "Concluído"
+  },
+  "ui_efc007a393f6": {
+    "source": "Save",
+    "en": "Save",
+    "pt-BR": "Salvar"
+  },
+  "ui_23bfe6ba1a05": {
+    "source": "Set odometer",
+    "en": "Set odometer",
+    "pt-BR": "Ajustar hodômetro"
+  },
+  "ui_f5a39ef50252": {
+    "source": "Streaming to Tripper Dash",
+    "en": "Streaming to Tripper Dash",
+    "pt-BR": "Transmitindo para o Tripper Dash"
+  },
+  "ui_1a6a5ba8c23d": {
+    "source": "Searching…",
+    "en": "Searching…",
+    "pt-BR": "Procurando…"
+  },
+  "ui_78b63e776bab": {
+    "source": "Looking for Tripper Dash",
+    "en": "Looking for Tripper Dash",
+    "pt-BR": "Procurando o Tripper Dash"
+  },
+  "ui_ff9922bc189a": {
+    "source": "Dash not detected",
+    "en": "Dash not detected",
+    "pt-BR": "Painel não encontrado"
+  },
+  "ui_2a561f6bf62d": {
+    "source": "Start navigation",
+    "en": "Start navigation",
+    "pt-BR": "Iniciar navegação"
+  },
+  "ui_3477dde3aaf8": {
+    "source": "Open dash view",
+    "en": "Open dash view",
+    "pt-BR": "Abrir visão do painel"
+  },
+  "ui_48d9ab5f3e0a": {
+    "source": "Saved destinations",
+    "en": "Saved destinations",
+    "pt-BR": "Destinos salvos"
+  },
+  "ui_42b2178a05dd": {
+    "source": "No saved destinations yet. Share a place from Google Maps, then tap “Save this destination”.",
+    "en": "No saved destinations yet. Share a place from Google Maps, then tap “Save this destination”.",
+    "pt-BR": "Nenhum destino salvo. Compartilhe um local do Google Maps e toque em “Salvar este destino”."
+  },
+  "ui_44c242032bb2": {
+    "source": "Google sign-in failed",
+    "en": "Google sign-in failed",
+    "pt-BR": "Falha ao entrar com Google"
+  },
+  "ui_2a84507a28e1": {
+    "source": "Your Himalayan's co-pilot.\\nRoutes to the dash, eyes on the road.",
+    "en": "Your Himalayan's co-pilot.\\nRoutes to the dash, eyes on the road.",
+    "pt-BR": "O copiloto da sua Himalayan.\\nRotas no painel, atenção na estrada."
+  },
+  "ui_c66b2adcc5fc": {
+    "source": "Signing in…",
+    "en": "Signing in…",
+    "pt-BR": "Entrando…"
+  },
+  "ui_ccc5b0edaae6": {
+    "source": "Continue with Google",
+    "en": "Continue with Google",
+    "pt-BR": "Continuar com Google"
+  },
+  "ui_1215dccb2bca": {
+    "source": "Continue without signing in",
+    "en": "Continue without signing in",
+    "pt-BR": "Continuar sem entrar"
+  },
+  "ui_2e02623966f9": {
+    "source": "Continue",
+    "en": "Continue",
+    "pt-BR": "Continuar"
+  },
+  "ui_2b7d01c35184": {
+    "source": "Sign in to sync across devices · data stays local otherwise",
+    "en": "Sign in to sync across devices · data stays local otherwise",
+    "pt-BR": "Entre para sincronizar entre aparelhos; sem login, os dados ficam locais"
+  },
+  "ui_09d6a286d5b4": {
+    "source": "Local only · add a Firebase project to sync across devices",
+    "en": "Local only · add a Firebase project to sync across devices",
+    "pt-BR": "Somente local · adicione um projeto Firebase para sincronizar"
+  },
+  "ui_6dd4fe806eb6": {
+    "source": "Telemetry",
+    "en": "Telemetry",
+    "pt-BR": "Telemetria"
+  },
+  "ui_2f57e5738e27": {
+    "source": "Ride history",
+    "en": "Ride history",
+    "pt-BR": "Histórico de viagens"
+  },
+  "ui_ffc652ccfba8": {
+    "source": "rides",
+    "en": "rides",
+    "pt-BR": "viagens"
+  },
+  "ui_3de8cb073859": {
+    "source": "km total",
+    "en": "km total",
+    "pt-BR": "km no total"
+  },
+  "ui_714eea0f4c98": {
+    "source": "time",
+    "en": "time",
+    "pt-BR": "tempo"
+  },
+  "ui_5d3f344b5bd2": {
+    "source": "duration",
+    "en": "duration",
+    "pt-BR": "duração"
+  },
+  "ui_97e77871b5fc": {
+    "source": "avg",
+    "en": "avg",
+    "pt-BR": "média"
+  },
+  "ui_0706025b2bbc": {
+    "source": "max",
+    "en": "max",
+    "pt-BR": "máxima"
+  },
+  "ui_aaedce9a7fec": {
+    "source": "Delete ride",
+    "en": "Delete ride",
+    "pt-BR": "Excluir viagem"
+  },
+  "ui_ca280051380d": {
+    "source": "No rides recorded yet",
+    "en": "No rides recorded yet",
+    "pt-BR": "Nenhuma viagem registrada"
+  },
+  "ui_c13972ee5034": {
+    "source": "Connect to your dash to start a ride — it's saved automatically when you disconnect.",
+    "en": "Connect to your dash to start a ride — it's saved automatically when you disconnect.",
+    "pt-BR": "Conecte ao painel para iniciar uma viagem. Ela é salva ao desconectar."
+  },
+  "ui_ca99e6ee41dc": {
+    "source": "Shared location",
+    "en": "Shared location",
+    "pt-BR": "Local compartilhado"
+  },
+  "ui_5be37a60d822": {
+    "source": "Maps link",
+    "en": "Maps link",
+    "pt-BR": "Link do Maps"
+  },
+  "ui_e3de5ab0ca4c": {
+    "source": "Off",
+    "en": "Off",
+    "pt-BR": "Desligado"
+  },
+  "ui_e0049a66519c": {
+    "source": "On",
+    "en": "On",
+    "pt-BR": "Ligado"
+  },
+  "ui_2c445cb7985f": {
+    "source": "Chime only",
+    "en": "Chime only",
+    "pt-BR": "Somente aviso sonoro"
+  },
+  "ui_3bb8c51f1c3b": {
+    "source": "Chime",
+    "en": "Chime",
+    "pt-BR": "Aviso sonoro"
+  },
+  "ui_af682bca4579": {
+    "source": "Full TTS",
+    "en": "Full TTS",
+    "pt-BR": "Voz completa"
+  },
+  "ui_d945e60f4848": {
+    "source": "Resolving link…",
+    "en": "Resolving link…",
+    "pt-BR": "Abrindo link…"
+  },
+  "ui_74435cbf92a4": {
+    "source": "Shared from Google Maps",
+    "en": "Shared from Google Maps",
+    "pt-BR": "Compartilhado do Google Maps"
+  },
+  "ui_d42713493ca8": {
+    "source": "Destination",
+    "en": "Destination",
+    "pt-BR": "Destino"
+  },
+  "ui_786a04e7d3fd": {
+    "source": "Resolving…",
+    "en": "Resolving…",
+    "pt-BR": "Buscando…"
+  },
+  "ui_423208095dd7": {
+    "source": "Distance",
+    "en": "Distance",
+    "pt-BR": "Distância"
+  },
+  "ui_1370004da76f": {
+    "source": "Duration",
+    "en": "Duration",
+    "pt-BR": "Duração"
+  },
+  "ui_342a85758a7a": {
+    "source": "Arrive",
+    "en": "Arrive",
+    "pt-BR": "Chegada"
+  },
+  "ui_921d64e81936": {
+    "source": "Voice guidance",
+    "en": "Voice guidance",
+    "pt-BR": "Orientações por voz"
+  },
+  "ui_11b1929c3399": {
+    "source": "Starting navigation…",
+    "en": "Starting navigation…",
+    "pt-BR": "Iniciando navegação…"
+  },
+  "ui_07dffcbf42e7": {
+    "source": "Resolving destination…",
+    "en": "Resolving destination…",
+    "pt-BR": "Buscando destino…"
+  },
+  "ui_5b44b4b8ac20": {
+    "source": "Finding route…",
+    "en": "Finding route…",
+    "pt-BR": "Calculando rota…"
+  },
+  "ui_b8eee3c5f910": {
+    "source": "Save this destination",
+    "en": "Save this destination",
+    "pt-BR": "Salvar este destino"
+  },
+  "ui_d82bba14f503": {
+    "source": "Save destination",
+    "en": "Save destination",
+    "pt-BR": "Salvar destino"
+  },
+  "ui_4e39567064b6": {
+    "source": "Note (optional)",
+    "en": "Note (optional)",
+    "pt-BR": "Observação (opcional)"
+  },
+  "ui_f6fdbe48dc54": {
+    "source": "Delete",
+    "en": "Delete",
+    "pt-BR": "Excluir"
+  },
+  "ui_67475b1d7205": {
+    "source": "Edit destination",
+    "en": "Edit destination",
+    "pt-BR": "Editar destino"
+  },
+  "ui_2c924e308820": {
+    "source": "Note",
+    "en": "Note",
+    "pt-BR": "Observação"
+  },
+  "ui_9ead47a82a0d": {
+    "source": "edit",
+    "en": "edit",
+    "pt-BR": "editar"
+  },
+  "ui_848d80ca32cf": {
+    "source": "Not signed in",
+    "en": "Not signed in",
+    "pt-BR": "Não conectado à conta"
+  },
+  "ui_5d371ec70c97": {
+    "source": "Kilometres",
+    "en": "Kilometres",
+    "pt-BR": "Quilômetros"
+  },
+  "ui_5fa6c4032be3": {
+    "source": "Miles",
+    "en": "Miles",
+    "pt-BR": "Milhas"
+  },
+  "ui_6512ee1541e9": {
+    "source": "Connection",
+    "en": "Connection",
+    "pt-BR": "Conexão"
+  },
+  "ui_a089f600e3d2": {
+    "source": "Linked",
+    "en": "Linked",
+    "pt-BR": "Conectado"
+  },
+  "ui_b26ea400ee1e": {
+    "source": "Auto-connect on start",
+    "en": "Auto-connect on start",
+    "pt-BR": "Conectar automaticamente"
+  },
+  "ui_4252ae92ebb4": {
+    "source": "Link when the bike is near",
+    "en": "Link when the bike is near",
+    "pt-BR": "Conectar quando a moto estiver próxima"
+  },
+  "ui_68b0ab5b1850": {
+    "source": "Stream quality",
+    "en": "Stream quality",
+    "pt-BR": "Qualidade da transmissão"
+  },
+  "ui_f43f9cbb198f": {
+    "source": "During a ride",
+    "en": "During a ride",
+    "pt-BR": "Durante a viagem"
+  },
+  "ui_24158c113d59": {
+    "source": "Turn phone screen off",
+    "en": "Turn phone screen off",
+    "pt-BR": "Apagar a tela do celular"
+  },
+  "ui_f3205d7e31c3": {
+    "source": "Map keeps streaming to the dash",
+    "en": "Map keeps streaming to the dash",
+    "pt-BR": "O mapa continua sendo enviado ao painel"
+  },
+  "ui_6ac5e6f53a72": {
+    "source": "Keep dash awake",
+    "en": "Keep dash awake",
+    "pt-BR": "Manter painel ativo"
+  },
+  "ui_0bda22782d81": {
+    "source": "Prevent Tripper sleep",
+    "en": "Prevent Tripper sleep",
+    "pt-BR": "Evitar que o Tripper entre em repouso"
+  },
+  "ui_d0778ab42a66": {
+    "source": "Voice & guidance",
+    "en": "Voice & guidance",
+    "pt-BR": "Voz e orientações"
+  },
+  "ui_12748281e0f0": {
+    "source": "Units",
+    "en": "Units",
+    "pt-BR": "Unidades"
+  },
+  "ui_905f63092ff2": {
+    "source": "Sync",
+    "en": "Sync",
+    "pt-BR": "Sincronização"
+  },
+  "ui_dd2a30568400": {
+    "source": "Local only",
+    "en": "Local only",
+    "pt-BR": "Somente local"
+  },
+  "ui_b41d6b8adedf": {
+    "source": "Add your own Firebase project to sync across devices",
+    "en": "Add your own Firebase project to sync across devices",
+    "pt-BR": "Adicione um projeto Firebase para sincronizar aparelhos"
+  },
+  "ui_b2ef6af67fe0": {
+    "source": "Synced",
+    "en": "Synced",
+    "pt-BR": "Sincronizado"
+  },
+  "ui_1b6c524ffb71": {
+    "source": "Signed in",
+    "en": "Signed in",
+    "pt-BR": "Conectado à conta"
+  },
+  "ui_c145743af88f": {
+    "source": "Sign in to sync across devices · data stays local until then",
+    "en": "Sign in to sync across devices · data stays local until then",
+    "pt-BR": "Entre para sincronizar; até lá, os dados ficam no aparelho"
+  },
+  "ui_dc1649a16c14": {
+    "source": "Sign out",
+    "en": "Sign out",
+    "pt-BR": "Sair da conta"
+  },
+  "ui_c7ac183be49f": {
+    "source": "local only",
+    "en": "local only",
+    "pt-BR": "somente local"
+  },
+  "ui_9200a84eb7b5": {
+    "source": "sync on",
+    "en": "sync on",
+    "pt-BR": "sincronização ativa"
+  },
+  "ui_4bfdea6ff4dd": {
+    "source": "sync off",
+    "en": "sync off",
+    "pt-BR": "sincronização desligada"
+  },
+  "ui_7e8548c30fef": {
+    "source": "Economy",
+    "en": "Economy",
+    "pt-BR": "Econômica"
+  },
+  "ui_03342dbb856b": {
+    "source": "Balanced",
+    "en": "Balanced",
+    "pt-BR": "Equilibrada"
+  },
+  "ui_b1a5954a483f": {
+    "source": "High",
+    "en": "High",
+    "pt-BR": "Alta"
+  },
+  "ui_ee155a54ab07": {
+    "source": "Less data and lower frame rate.",
+    "en": "Less data and lower frame rate.",
+    "pt-BR": "Menor uso de dados e menor fluidez."
+  },
+  "ui_72afc2a59cd5": {
+    "source": "Balanced clarity and smoothness.",
+    "en": "Balanced clarity and smoothness.",
+    "pt-BR": "Equilíbrio entre definição e fluidez."
+  },
+  "ui_0dbbff281a01": {
+    "source": "More detail, with higher data usage.",
+    "en": "More detail, with higher data usage.",
+    "pt-BR": "Mais definição, com maior uso de dados."
+  },
+  "ui_e6e9167a278a": {
+    "source": "Applied the next time you connect to the dash.",
+    "en": "Applied the next time you connect to the dash.",
+    "pt-BR": "Aplicada na próxima conexão com o painel."
+  },
+  "ui_709e73359bac": {
+    "source": "Dash streaming",
+    "en": "Dash streaming",
+    "pt-BR": "Transmissão para o painel"
+  },
+  "ui_24df69f0356a": {
+    "source": "Keeps the map streaming to the Tripper Dash",
+    "en": "Keeps the map streaming to the Tripper Dash",
+    "pt-BR": "Mantém o envio do mapa ao Tripper Dash"
+  },
+  "ui_f5757a314ad6": {
+    "source": "TerraNav — streaming to dash",
+    "en": "TerraNav — streaming to dash",
+    "pt-BR": "TerraNav — transmitindo para o painel"
+  },
+  "ui_4f5f50e9679b": {
+    "source": "Map is live on the Tripper. Screen can stay off.",
+    "en": "Map is live on the Tripper. Screen can stay off.",
+    "pt-BR": "Mapa ativo no Tripper. A tela do celular pode ficar apagada."
+  },
+  "ui_35bf77dde229": {
+    "source": "You have arrived at your destination",
+    "en": "You have arrived at your destination",
+    "pt-BR": "Você chegou ao destino"
+  },
+  "ui_8da88b6de957": {
+    "source": "turn left",
+    "en": "turn left",
+    "pt-BR": "vire à esquerda"
+  },
+  "ui_c8845877c8fe": {
+    "source": "turn right",
+    "en": "turn right",
+    "pt-BR": "vire à direita"
+  },
+  "ui_2c5ddc7302f4": {
+    "source": "keep left",
+    "en": "keep left",
+    "pt-BR": "mantenha-se à esquerda"
+  },
+  "ui_cf05b995ee0f": {
+    "source": "keep right",
+    "en": "keep right",
+    "pt-BR": "mantenha-se à direita"
+  },
+  "ui_8494af38f0c6": {
+    "source": "sharp left",
+    "en": "sharp left",
+    "pt-BR": "vire acentuadamente à esquerda"
+  },
+  "ui_51854980827b": {
+    "source": "sharp right",
+    "en": "sharp right",
+    "pt-BR": "vire acentuadamente à direita"
+  },
+  "ui_b755468008e2": {
+    "source": "make a U-turn",
+    "en": "make a U-turn",
+    "pt-BR": "faça o retorno"
+  },
+  "ui_ac2d0c52fc73": {
+    "source": "enter the roundabout",
+    "en": "enter the roundabout",
+    "pt-BR": "entre na rotatória"
+  },
+  "ui_502a243e79f8": {
+    "source": "you have arrived",
+    "en": "you have arrived",
+    "pt-BR": "você chegou"
+  },
+  "ui_5c7ad5564578": {
+    "source": "continue straight",
+    "en": "continue straight",
+    "pt-BR": "siga em frente"
+  },
+  "ui_b3a5b8b6cd26": {
+    "source": "500 meters",
+    "en": "500 meters",
+    "pt-BR": "500 metros"
+  },
+  "ui_c1df0ebd64a0": {
+    "source": "200 meters",
+    "en": "200 meters",
+    "pt-BR": "200 metros"
+  },
+  "ui_752fdaec403b": {
+    "source": "Arrive at destination",
+    "en": "Arrive at destination",
+    "pt-BR": "Chegue ao destino"
+  },
+  "ui_9908f9679cde": {
+    "source": "Make a U-turn",
+    "en": "Make a U-turn",
+    "pt-BR": "Faça o retorno"
+  },
+  "ui_4adfa5797f24": {
+    "source": "road",
+    "en": "road",
+    "pt-BR": "via"
+  },
+  "ui_50d83f1ed6d2": {
+    "source": "Maintenance due",
+    "en": "Maintenance due",
+    "pt-BR": "Manutenção pendente"
+  },
+  "ui_389f5f6d566b": {
+    "source": "Maintenance reminders",
+    "en": "Maintenance reminders",
+    "pt-BR": "Lembretes de manutenção"
+  },
+  "ui_14d7c4ed4064": {
+    "source": "Alerts when a service interval is due",
+    "en": "Alerts when a service interval is due",
+    "pt-BR": "Avisa quando uma manutenção está próxima"
+  },
+  "ui_e00c87d1cf55": {
+    "source": "Mapa e informações da via",
+    "en": "Map and road information",
+    "pt-BR": "Mapa e informações da via"
+  },
+  "ui_02e64b7a40b5": {
+    "source": "Modo do mapa · celular e moto",
+    "en": "Map mode · phone and dash",
+    "pt-BR": "Modo do mapa · celular e moto"
+  },
+  "ui_8fb2bb1ac38f": {
+    "source": "Dia",
+    "en": "Day",
+    "pt-BR": "Dia"
+  },
+  "ui_5484e6b77c76": {
+    "source": "Noite",
+    "en": "Night",
+    "pt-BR": "Noite"
+  },
+  "ui_c9384f83fdd4": {
+    "source": "Semáforos e radares fixos cadastrados. Limite em km/h somente quando identificado na via. Cobertura variável; sem indicação da cor do semáforo e sem acidentes ou obras em tempo real.",
+    "en": "Mapped traffic lights and fixed cameras. Speed limits in km/h when identified on the road. Coverage varies; no live signal colours, accidents or roadworks.",
+    "pt-BR": "Semáforos e radares fixos cadastrados. Limite em km/h somente quando identificado na via. Cobertura variável; sem indicação da cor do semáforo e sem acidentes ou obras em tempo real."
+  },
+  "ui_2977e6dd5998": {
+    "source": "Dados © OpenStreetMap contributors · ODbL\\nConsulta da região via Overpass com internet.",
+    "en": "Data © OpenStreetMap contributors · ODbL\\nRegional lookup through Overpass requires internet.",
+    "pt-BR": "Dados © OpenStreetMap contributors · ODbL\\nConsulta da região via Overpass com internet."
+  },
+  "ui_2d5f83271c84": {
+    "source": "Dados da região indisponíveis",
+    "en": "Regional road data unavailable",
+    "pt-BR": "Dados da região indisponíveis"
+  },
+  "ui_cffbb3aef183": {
+    "source": "Encerre a navegação e desconecte do painel para atualizar.",
+    "en": "End navigation and disconnect from the dash before updating.",
+    "pt-BR": "Encerre a navegação e desconecte do painel para atualizar."
+  },
+  "ui_1067f0d35c74": {
+    "source": "Instalar atualização",
+    "en": "Install update",
+    "pt-BR": "Instalar atualização"
+  },
+  "ui_21d8482bc8f0": {
+    "source": "Verificar atualizações",
+    "en": "Check for updates",
+    "pt-BR": "Verificar atualizações"
+  },
+  "ui_cc57e2c5158b": {
+    "source": "Aguardando posição · dados OSM",
+    "en": "Waiting for location · OSM data",
+    "pt-BR": "Aguardando posição · dados OSM"
+  },
+  "ui_f87cf68a9cbf": {
+    "source": "Buscando dados OSM da região…",
+    "en": "Loading regional OSM data…",
+    "pt-BR": "Buscando dados OSM da região…"
+  },
+  "ui_f33c92bf5593": {
+    "source": "Usando dados OSM em cache",
+    "en": "Using cached OSM data",
+    "pt-BR": "Usando dados OSM em cache"
+  },
+  "ui_592feddbc10a": {
+    "source": "Dados da via indisponíveis · tente com internet",
+    "en": "Road data unavailable · try with internet",
+    "pt-BR": "Dados da via indisponíveis · tente com internet"
+  },
+  "ui_d17d7711679c": {
+    "source": "Dados OSM · cobertura variável",
+    "en": "OSM data · coverage varies",
+    "pt-BR": "Dados OSM · cobertura variável"
+  },
+  "ui_f4a2f7a8a6a7": {
+    "source": "Verificação automática ao abrir o app, até uma vez por dia.",
+    "en": "Automatically checks when the app opens, up to once a day.",
+    "pt-BR": "Verificação automática ao abrir o app, até uma vez por dia."
+  },
+  "ui_be558203c1b2": {
+    "source": "Atualização pausada durante a navegação. Tente novamente ao terminar.",
+    "en": "Update paused during navigation. Try again when finished.",
+    "pt-BR": "Atualização pausada durante a navegação. Tente novamente ao terminar."
+  },
+  "ui_95ef08902d3e": {
+    "source": "Verificando atualizações…",
+    "en": "Checking for updates…",
+    "pt-BR": "Verificando atualizações…"
+  },
+  "ui_55c083a3f52e": {
+    "source": "Nenhuma versão publicada no GitHub ainda.",
+    "en": "No release has been published on GitHub yet.",
+    "pt-BR": "Nenhuma versão publicada no GitHub ainda."
+  },
+  "ui_45c07211308f": {
+    "source": "Você está na versão mais recente publicada.",
+    "en": "You have the latest published version.",
+    "pt-BR": "Você está na versão mais recente publicada."
+  },
+  "ui_6b624a4ae98b": {
+    "source": "A nova versão exige um Android mais recente.",
+    "en": "The new version requires a newer Android.",
+    "pt-BR": "A nova versão exige um Android mais recente."
+  },
+  "ui_a69068d58f19": {
+    "source": "Baixando atualização…",
+    "en": "Downloading update…",
+    "pt-BR": "Baixando atualização…"
+  },
+  "ui_cc7f0b92f7b9": {
+    "source": "Download verificado. Pronto para instalar.",
+    "en": "Download verified. Ready to install.",
+    "pt-BR": "Download verificado. Pronto para instalar."
+  },
+  "ui_dff903a42502": {
+    "source": "Permita instalar pelo TerraNav, volte e toque em Instalar novamente.",
+    "en": "Allow TerraNav to install apps, then return and tap Install again.",
+    "pt-BR": "Permita instalar pelo TerraNav, volte e toque em Instalar novamente."
+  },
+  "ui_2da2f3c1b7ae": {
+    "source": "Confira sua conexão e tente novamente.",
+    "en": "Check your connection and try again.",
+    "pt-BR": "Confira sua conexão e tente novamente."
+  },
+  "ui_07c83518a013": {
+    "source": "Download incompleto. Baixe novamente.",
+    "en": "Incomplete download. Please download again.",
+    "pt-BR": "Download incompleto. Baixe novamente."
+  },
+  "ui_f70ad9baed01": {
+    "source": "Arquivo diferente da versão publicada.",
+    "en": "The file does not match the published release.",
+    "pt-BR": "Arquivo diferente da versão publicada."
+  },
+  "ui_cf90f2b67915": {
+    "source": "Assinatura ou versão incompatível com este TerraNav.",
+    "en": "Signature or version is incompatible with this TerraNav.",
+    "pt-BR": "Assinatura ou versão incompatível com este TerraNav."
+  },
+  "ui_619603afa25f": {
+    "source": "Android incompatível.",
+    "en": "Incompatible Android version.",
+    "pt-BR": "Android incompatível."
+  },
+  "ui_0ec64585af5a": {
+    "source": "Esta versão ainda não contém os arquivos de atualização.",
+    "en": "This release does not include update files yet.",
+    "pt-BR": "Esta versão ainda não contém os arquivos de atualização."
+  },
+  "ui_b43ce39e78a8": {
+    "source": "Endereço de atualização inválido.",
+    "en": "Invalid update address.",
+    "pt-BR": "Endereço de atualização inválido."
+  },
+  "ui_b325b9342efa": {
+    "source": "Manifesto indisponível.",
+    "en": "Update manifest unavailable.",
+    "pt-BR": "Manifesto indisponível."
+  },
+  "ui_a911aba54471": {
+    "source": "Atualização destinada a outro aplicativo.",
+    "en": "This update belongs to another application.",
+    "pt-BR": "Atualização destinada a outro aplicativo."
+  },
+  "ui_c2b9f9028e98": {
+    "source": "APK não encontrado nesta versão.",
+    "en": "APK missing from this release.",
+    "pt-BR": "APK não encontrado nesta versão."
+  },
+  "ui_f3438abdfb9d": {
+    "source": "Metadados da atualização inválidos.",
+    "en": "Invalid update metadata.",
+    "pt-BR": "Metadados da atualização inválidos."
+  },
+  "ui_963aec0e8b3a": {
+    "source": "Tamanho do APK inválido.",
+    "en": "Invalid APK size.",
+    "pt-BR": "Tamanho do APK inválido."
+  },
+  "ui_aad8e9c542cf": {
+    "source": "Não foi possível salvar o APK.",
+    "en": "Could not save the APK.",
+    "pt-BR": "Não foi possível salvar o APK."
+  },
+  "ui_efeb87144232": {
+    "source": "APK inválido.",
+    "en": "Invalid APK.",
+    "pt-BR": "APK inválido."
+  },
+  "ui_cf179fe68676": {
+    "source": "Resposta de atualização muito grande.",
+    "en": "Update response is too large.",
+    "pt-BR": "Resposta de atualização muito grande."
+  },
+  "ui_01d98ba9c6fe": {
+    "source": "Origem de download não autorizada.",
+    "en": "Download source is not allowed.",
+    "pt-BR": "Origem de download não autorizada."
+  },
+  "ui_6091d9799ad6": {
+    "source": "Redirecionamento inválido.",
+    "en": "Invalid redirect.",
+    "pt-BR": "Redirecionamento inválido."
+  },
+  "ui_a4a560043d01": {
+    "source": "Muitos redirecionamentos no download.",
+    "en": "Too many download redirects.",
+    "pt-BR": "Muitos redirecionamentos no download."
+  },
+  "ui_609171f741be": {
+    "source": "Joining ${ui.ssid}…",
+    "en": "Joining %1$s…",
+    "pt-BR": "Conectando a %1$s…"
+  },
+  "ui_d4ee94174862": {
+    "source": "Frames encoded: ${ui.frameCount}",
+    "en": "Frames encoded: %1$s",
+    "pt-BR": "Quadros codificados: %1$s"
+  },
+  "ui_4a835efcadb9": {
+    "source": "Joystick: $btn",
+    "en": "Joystick: %1$s",
+    "pt-BR": "Joystick: %1$s"
+  },
+  "ui_71e78615aefa": {
+    "source": "overdue ${-remainingKm} km",
+    "en": "%1$s km overdue",
+    "pt-BR": "%1$s km em atraso"
+  },
+  "ui_feb8c3f85b2d": {
+    "source": "in ${\"%,d\".format(remainingKm)} km",
+    "en": "in %1$s km",
+    "pt-BR": "em %1$s km"
+  },
+  "ui_7ccdbd4d8595": {
+    "source": "/ ${\"%,d\".format(hero.item.intervalKm)} km ridden",
+    "en": "/ %1$s km ridden",
+    "pt-BR": "/ %1$s km percorridos"
+  },
+  "ui_0c9ad7ca7982": {
+    "source": "Last · ${\"%,d\".format(row.item.lastDoneOdoKm)} km",
+    "en": "Last · %1$s km",
+    "pt-BR": "Última · %1$s km"
+  },
+  "ui_790408f90b27": {
+    "source": "Fuel · ${ui.fills30} fills",
+    "en": "Fuel · %1$s fills",
+    "pt-BR": "Combustível · %1$s abastecimentos"
+  },
+  "ui_1cbf6a273a43": {
+    "source": "Marks the item done at ${\"%,d\".format(odo)} km.",
+    "en": "Marks the item done at %1$s km.",
+    "pt-BR": "Registra o serviço aos %1$s km."
+  },
+  "ui_f51636b0a5e2": {
+    "source": "Atualizações · TerraNav ${updater.installedName}",
+    "en": "Updates · TerraNav %1$s",
+    "pt-BR": "Atualizações · TerraNav %1$s"
+  },
+  "ui_7a5738120cf9": {
+    "source": "Nova versão: ${release.versionName}",
+    "en": "New version: %1$s",
+    "pt-BR": "Nova versão: %1$s"
+  },
+  "ui_3d374f281716": {
+    "source": "Baixar atualização · ${release.size / (1024 * 1024)} MB",
+    "en": "Download update · %1$s MB",
+    "pt-BR": "Baixar atualização · %1$s MB"
+  },
+  "ui_297aeda70f5d": {
+    "source": "TerraNav ${updateState.release?.versionName} disponível · Ver atualização",
+    "en": "TerraNav %1$s available · View update",
+    "pt-BR": "TerraNav %1$s disponível · Ver atualização"
+  },
+  "ui_842cccf76dd3": {
+    "source": "TerraNav ${r.versionName} disponível.",
+    "en": "TerraNav %1$s available.",
+    "pt-BR": "TerraNav %1$s disponível."
+  },
+  "ui_51731068f538": {
+    "source": "Não foi possível verificar. ${friendly(e)}",
+    "en": "Could not check for updates. %1$s",
+    "pt-BR": "Não foi possível verificar. %1$s"
+  },
+  "ui_153dc3d41e8a": {
+    "source": "Atualização não baixada. ${friendly(e)}",
+    "en": "Update was not downloaded. %1$s",
+    "pt-BR": "Atualização não baixada. %1$s"
+  },
+  "ui_6cdea9012f31": {
+    "source": "Não foi possível instalar. ${friendly(e)}",
+    "en": "Could not install. %1$s",
+    "pt-BR": "Não foi possível instalar. %1$s"
+  },
+  "ui_52c64fd8e633": {
+    "source": "Servidor indisponível (${conn.responseCode}).",
+    "en": "Server unavailable (%1$s).",
+    "pt-BR": "Servidor indisponível (%1$s)."
+  },
+  "ui_16b1f2ee820f": {
+    "source": "Now, ${turnPhrase(maneuver)}",
+    "en": "Now, %1$s",
+    "pt-BR": "Agora, %1$s"
+  },
+  "ui_87c4ef4bb56d": {
+    "source": "In ${roundDist(distanceM)}, ${turnPhrase(maneuver)}",
+    "en": "In %1$s, %2$s",
+    "pt-BR": "Em %1$s, %2$s"
+  },
+  "ui_35062d22f685": {
+    "source": "${(m / 50).toInt() * 50} meters",
+    "en": "%1$s meters",
+    "pt-BR": "%1$s metros"
+  },
+  "ui_0286264429aa": {
+    "source": "Head out on $road",
+    "en": "Head out on %1$s",
+    "pt-BR": "Siga pela %1$s"
+  },
+  "ui_6d33a3916980": {
+    "source": "Turn left onto $road",
+    "en": "Turn left onto %1$s",
+    "pt-BR": "Vire à esquerda na %1$s"
+  },
+  "ui_57e343ca8a7a": {
+    "source": "Turn right onto $road",
+    "en": "Turn right onto %1$s",
+    "pt-BR": "Vire à direita na %1$s"
+  },
+  "ui_f26820fcb381": {
+    "source": "Slight left onto $road",
+    "en": "Slight left onto %1$s",
+    "pt-BR": "Siga à esquerda na %1$s"
+  },
+  "ui_1890e08dc21f": {
+    "source": "Slight right onto $road",
+    "en": "Slight right onto %1$s",
+    "pt-BR": "Siga à direita na %1$s"
+  },
+  "ui_aba0086c3882": {
+    "source": "Sharp left onto $road",
+    "en": "Sharp left onto %1$s",
+    "pt-BR": "Vire acentuadamente à esquerda na %1$s"
+  },
+  "ui_578132a69223": {
+    "source": "Sharp right onto $road",
+    "en": "Sharp right onto %1$s",
+    "pt-BR": "Vire acentuadamente à direita na %1$s"
+  },
+  "ui_fe4aea1e6e00": {
+    "source": "At the roundabout, take $road",
+    "en": "At the roundabout, take %1$s",
+    "pt-BR": "Na rotatória, siga pela %1$s"
+  },
+  "ui_d594afbedac1": {
+    "source": "Continue on $road",
+    "en": "Continue on %1$s",
+    "pt-BR": "Continue pela %1$s"
+  },
+  "ui_d1b0225f99cb": {
+    "source": "${m.name} — overdue ${-remaining} km",
+    "en": "%1$s — %2$s km overdue",
+    "pt-BR": "%1$s — %2$s km em atraso"
+  },
+  "ui_3f2dd8617172": {
+    "source": "${m.name} — due in $remaining km",
+    "en": "%1$s — due in %2$s km",
+    "pt-BR": "%1$s — próxima em %2$s km"
+  },
+  "ui_fa70519f2962": {
+    "source": "${due.size} services due",
+    "en": "%1$s services due",
+    "pt-BR": "%1$s serviços pendentes"
+  },
+  "ui_baee842817ec": {
+    "source": "TERRANAV · waiting for GPS",
+    "en": "TERRANAV · waiting for GPS",
+    "pt-BR": "TERRANAV · aguardando GPS"
+  },
+  "ui_e21735a6b4bf": {
+    "source": "TerraNav: moto na montanha",
+    "en": "TerraNav: motorcycle in the mountains",
+    "pt-BR": "TerraNav: moto na montanha"
+  },
+  "nav_kilometers": {
+    "source": "Kilometers",
+    "en": "%1$s kilometers",
+    "pt-BR": "%1$s quilômetros"
+  },
+  "mapped_speed_limit": {
+    "source": "Mapped speed limit",
+    "en": "%1$s km/h · mapped limit",
+    "pt-BR": "%1$s km/h · limite mapeado"
+  },
+  "nav_arriving": {
+    "source": "Arriving",
+    "en": "Arriving",
+    "pt-BR": "Chegando"
+  },
+  "thermal_hot": {
+    "source": "Hot",
+    "en": "Hot",
+    "pt-BR": "Quente"
+  },
+  "thermal_throttling": {
+    "source": "Throttling",
+    "en": "Throttling",
+    "pt-BR": "Reduzindo desempenho"
+  },
+  "sync_unconfigured": {
+    "source": "Sync not configured",
+    "en": "Sync not configured",
+    "pt-BR": "Sincronização não configurada"
+  },
+  "signin_failed": {
+    "source": "Sign-in failed",
+    "en": "Sign-in failed",
+    "pt-BR": "Falha ao entrar"
+  }
+}

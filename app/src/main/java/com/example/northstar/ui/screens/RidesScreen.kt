@@ -1,5 +1,7 @@
 package com.example.northstar.ui.screens
 
+import com.example.northstar.settings.L10n
+import com.example.northstar.R
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -47,7 +49,7 @@ fun RidesScreen(ridesViewModel: RidesViewModel = viewModel()) {
             .padding(18.dp)
             .padding(bottom = 24.dp),
     ) {
-        ScreenHeader(eyebrow = "Telemetry", title = "Ride history")
+        ScreenHeader(eyebrow = L10n.text(R.string.ui_6dd4fe806eb6), title = L10n.text(R.string.ui_2f57e5738e27))
 
         if (rides.isEmpty()) {
             EmptyRides()
@@ -68,9 +70,9 @@ private fun RideTotals(rides: List<Ride>) {
     val totalSec = rides.sumOf { it.durationSec }
     TerraNavCard(modifier = Modifier.fillMaxWidth(), padding = 18.dp) {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-            Stat("${rides.size}", "rides")
-            Stat("%.0f".format(totalKm), "km total")
-            Stat(fmtDuration(totalSec), "time")
+            Stat("${rides.size}", L10n.text(R.string.ui_ffc652ccfba8))
+            Stat("%.0f".format(totalKm), L10n.text(R.string.ui_3de8cb073859))
+            Stat(fmtDuration(totalSec), L10n.text(R.string.ui_714eea0f4c98))
         }
     }
 }
@@ -112,15 +114,15 @@ private fun RideCard(ride: Ride, onDelete: () -> Unit) {
             }
             Spacer(Modifier.height(12.dp))
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                MiniStat(fmtDuration(ride.durationSec), "duration")
-                MiniStat("%.0f km/h".format(ride.avgSpeedKmh), "avg")
-                MiniStat("%.0f km/h".format(ride.maxSpeedKmh), "max")
+                MiniStat(fmtDuration(ride.durationSec), L10n.text(R.string.ui_5d3f344b5bd2))
+                MiniStat("%.0f km/h".format(ride.avgSpeedKmh), L10n.text(R.string.ui_97e77871b5fc))
+                MiniStat("%.0f km/h".format(ride.maxSpeedKmh), L10n.text(R.string.ui_0706025b2bbc))
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier.size(34.dp).clip(CircleShape).background(Surf2)
                         .clickable { onDelete() },
                 ) {
-                    Icon(TerraNavIcons.X, contentDescription = "Delete ride", tint = TextLo, modifier = Modifier.size(16.dp))
+                    Icon(TerraNavIcons.X, contentDescription = L10n.text(R.string.ui_aaedce9a7fec), tint = TextLo, modifier = Modifier.size(16.dp))
                 }
             }
         }
@@ -170,10 +172,10 @@ private fun EmptyRides() {
                 Icon(TerraNavIcons.Route, contentDescription = null, tint = TextLo, modifier = Modifier.size(26.dp))
             }
             Spacer(Modifier.height(14.dp))
-            Text("No rides recorded yet", color = TextHi, fontSize = 15.sp, fontWeight = FontWeight.SemiBold, fontFamily = GeistFamily)
+            Text(L10n.text(R.string.ui_ca280051380d), color = TextHi, fontSize = 15.sp, fontWeight = FontWeight.SemiBold, fontFamily = GeistFamily)
             Spacer(Modifier.height(6.dp))
             Text(
-                "Connect to your dash to start a ride — it's saved automatically when you disconnect.",
+                L10n.text(R.string.ui_c13972ee5034),
                 color = TextLo, fontSize = 13.sp,
                 modifier = Modifier.padding(horizontal = 8.dp),
             )
@@ -181,8 +183,8 @@ private fun EmptyRides() {
     }
 }
 
-private fun fmtDate(ms: Long) = SimpleDateFormat("EEE, d MMM yyyy", Locale.getDefault()).format(Date(ms))
-private fun fmtTime(ms: Long) = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date(ms))
+private fun fmtDate(ms: Long) = SimpleDateFormat("EEE, d MMM yyyy", L10n.locale).format(Date(ms))
+private fun fmtTime(ms: Long) = SimpleDateFormat("HH:mm", L10n.locale).format(Date(ms))
 private fun fmtDuration(sec: Long): String {
     val h = sec / 3600; val m = (sec % 3600) / 60
     return if (h > 0) "${h}h ${m}m" else "${m}m"

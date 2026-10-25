@@ -1,5 +1,7 @@
 package com.example.northstar.ui.screens
 
+import com.example.northstar.settings.L10n
+import com.example.northstar.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -37,8 +39,8 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-private val dfRow = SimpleDateFormat("MMM d", Locale.getDefault())
-private val dfBar = SimpleDateFormat("d/M", Locale.getDefault())
+private val dfRow get() = SimpleDateFormat("MMM d", L10n.locale)
+private val dfBar get() = SimpleDateFormat("d/M", L10n.locale)
 
 private fun iconFor(key: String): ImageVector = when (key) {
     "chain"  -> TerraNavIcons.Chain
@@ -50,8 +52,8 @@ private fun iconFor(key: String): ImageVector = when (key) {
 }
 
 private fun dueText(remainingKm: Int): String = when {
-    remainingKm < 0  -> "overdue ${-remainingKm} km"
-    else             -> "in ${"%,d".format(remainingKm)} km"
+    remainingKm < 0  -> L10n.text(R.string.ui_71e78615aefa, -remainingKm)
+    else             -> L10n.text(R.string.ui_feb8c3f85b2d, "%,d".format(remainingKm))
 }
 
 @Composable
@@ -75,9 +77,9 @@ fun GarageScreen(
     ) {
         ScreenHeader(
             eyebrow = "Himalayan 450 · ${"%,d".format(ui.odometerKm)} km",
-            title = "Garage",
+            title = L10n.text(R.string.ui_f614ac324abb),
             trailing = {
-                TerraNavBtn("Odometer", onClick = { showOdo = true }, variant = BtnVariant.Ghost, size = BtnSize.Sm)
+                TerraNavBtn(L10n.text(R.string.ui_8ca2cb929002), onClick = { showOdo = true }, variant = BtnVariant.Ghost, size = BtnSize.Sm)
             },
         )
 
@@ -125,7 +127,7 @@ private fun MaintenanceTab(ui: GarageUi, onMark: (MaintenanceItem) -> Unit, onLo
         TerraNavCard(modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)) {
             Row(horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.Top, modifier = Modifier.fillMaxWidth()) {
                 Column {
-                    Eyebrow("Most urgent")
+                    Eyebrow(L10n.text(R.string.ui_83922b9c177f))
                     Text(hero.item.name, color = TextHi, fontSize = 18.sp, fontWeight = FontWeight.Bold, fontFamily = GeistFamily, letterSpacing = (-0.36).sp, modifier = Modifier.padding(top = 5.dp))
                 }
                 TerraNavChip(
@@ -138,22 +140,22 @@ private fun MaintenanceTab(ui: GarageUi, onMark: (MaintenanceItem) -> Unit, onLo
             Row(verticalAlignment = Alignment.Bottom) {
                 Text("%,d".format(ridden), color = TextHi, fontSize = 30.sp, fontWeight = FontWeight.SemiBold, fontFamily = GeistMonoFamily)
                 Spacer(Modifier.width(6.dp))
-                Text("/ ${"%,d".format(hero.item.intervalKm)} km ridden", color = TextLo, fontSize = 13.sp, fontFamily = GeistMonoFamily, modifier = Modifier.padding(bottom = 3.dp))
+                Text(L10n.text(R.string.ui_7ccdbd4d8595, "%,d".format(hero.item.intervalKm)), color = TextLo, fontSize = 13.sp, fontFamily = GeistMonoFamily, modifier = Modifier.padding(bottom = 3.dp))
             }
             Spacer(Modifier.height(8.dp))
             Box(modifier = Modifier.fillMaxWidth().height(8.dp).clip(CircleShape).background(Surf3)) {
                 Box(Modifier.fillMaxWidth(frac).fillMaxHeight().clip(CircleShape).background(Brush.horizontalGradient(listOf(GoldDeep, tone))))
             }
             Spacer(Modifier.height(14.dp))
-            TerraNavBtn("Mark done today", onClick = { onMark(hero.item) }, icon = TerraNavIcons.Check, variant = BtnVariant.Primary, size = BtnSize.Sm, modifier = Modifier.fillMaxWidth())
+            TerraNavBtn(L10n.text(R.string.ui_471eb94ac9f9), onClick = { onMark(hero.item) }, icon = TerraNavIcons.Check, variant = BtnVariant.Primary, size = BtnSize.Sm, modifier = Modifier.fillMaxWidth())
         }
     }
 
-    Eyebrow("Service intervals", Modifier.padding(bottom = 8.dp, start = 4.dp))
+    Eyebrow(L10n.text(R.string.ui_4cf8d44a4fee), Modifier.padding(bottom = 8.dp, start = 4.dp))
 
     TerraNavCard(modifier = Modifier.fillMaxWidth(), padding = 6.dp) {
         if (ui.maint.isEmpty()) {
-            Text("No intervals yet — add one below.", color = TextLo, fontSize = 13.sp, modifier = Modifier.padding(14.dp))
+            Text(L10n.text(R.string.ui_371b614b9104), color = TextLo, fontSize = 13.sp, modifier = Modifier.padding(14.dp))
         }
         ui.maint.forEachIndexed { i, row ->
             if (i > 0) TerraNavDivider(Modifier.padding(horizontal = 4.dp))
@@ -166,7 +168,7 @@ private fun MaintenanceTab(ui: GarageUi, onMark: (MaintenanceItem) -> Unit, onLo
                 Spacer(Modifier.width(13.dp))
                 Column(Modifier.weight(1f)) {
                     Text(row.item.name, color = TextHi, fontSize = 14.5.sp, fontWeight = FontWeight.SemiBold, fontFamily = GeistFamily)
-                    Text("Last · ${"%,d".format(row.item.lastDoneOdoKm)} km", color = TextLo, fontSize = 12.sp, modifier = Modifier.padding(top = 2.dp))
+                    Text(L10n.text(R.string.ui_0c9ad7ca7982, "%,d".format(row.item.lastDoneOdoKm)), color = TextLo, fontSize = 12.sp, modifier = Modifier.padding(top = 2.dp))
                 }
                 Column(horizontalAlignment = Alignment.End) {
                     Text(dueText(row.remainingKm), color = color, fontSize = 12.5.sp, fontWeight = FontWeight.SemiBold, fontFamily = GeistMonoFamily)
@@ -181,8 +183,8 @@ private fun MaintenanceTab(ui: GarageUi, onMark: (MaintenanceItem) -> Unit, onLo
 
     Spacer(Modifier.height(14.dp))
     Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-        TerraNavBtn("Log a service", onClick = onLog, icon = TerraNavIcons.Check, variant = BtnVariant.Ghost, size = BtnSize.Md, modifier = Modifier.weight(1f))
-        TerraNavBtn("Add interval", onClick = onAdd, icon = TerraNavIcons.Plus, variant = BtnVariant.Ghost, size = BtnSize.Md, modifier = Modifier.weight(1f))
+        TerraNavBtn(L10n.text(R.string.ui_01ebfb7fd850), onClick = onLog, icon = TerraNavIcons.Check, variant = BtnVariant.Ghost, size = BtnSize.Md, modifier = Modifier.weight(1f))
+        TerraNavBtn(L10n.text(R.string.ui_efc578c58e04), onClick = onAdd, icon = TerraNavIcons.Plus, variant = BtnVariant.Ghost, size = BtnSize.Md, modifier = Modifier.weight(1f))
     }
 }
 
@@ -191,7 +193,7 @@ private fun FuelTab(ui: GarageUi, onAdd: () -> Unit, onDelete: (FuelFillup) -> U
     TerraNavCard(modifier = Modifier.fillMaxWidth().padding(bottom = 14.dp)) {
         Row(horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.Top, modifier = Modifier.fillMaxWidth()) {
             Column {
-                Eyebrow("Avg. efficiency · 30 days")
+                Eyebrow(L10n.text(R.string.ui_b0699b5d1f83))
                 Row(verticalAlignment = Alignment.Bottom, modifier = Modifier.padding(top = 7.dp)) {
                     Text(ui.avgKmpl30?.let { "%.1f".format(it) } ?: "—", color = Gold, fontSize = 38.sp, fontWeight = FontWeight.SemiBold, fontFamily = GeistMonoFamily, letterSpacing = (-0.76).sp)
                     Spacer(Modifier.width(6.dp))
@@ -212,8 +214,8 @@ private fun FuelTab(ui: GarageUi, onAdd: () -> Unit, onDelete: (FuelFillup) -> U
 
     Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.padding(bottom = 18.dp)) {
         listOf(
-            Pair("₹${"%,.0f".format(ui.spent30)}", "Spent · 30 days"),
-            Pair("%.1f l".format(ui.litres30), "Fuel · ${ui.fills30} fills"),
+            Pair("₹${"%,.0f".format(ui.spent30)}", L10n.text(R.string.ui_76854ee883db)),
+            Pair("%.1f l".format(ui.litres30), L10n.text(R.string.ui_790408f90b27, ui.fills30)),
         ).forEach { (v, k) ->
             Column(modifier = Modifier.weight(1f).clip(RoundedCornerShape(14.dp)).background(Surf1).border(1.dp, Line, RoundedCornerShape(14.dp)).padding(horizontal = 16.dp, vertical = 14.dp)) {
                 Text(v, color = TextHi, fontSize = 20.sp, fontWeight = FontWeight.SemiBold, fontFamily = GeistMonoFamily)
@@ -222,10 +224,10 @@ private fun FuelTab(ui: GarageUi, onAdd: () -> Unit, onDelete: (FuelFillup) -> U
         }
     }
 
-    Eyebrow("Fill-ups", Modifier.padding(bottom = 8.dp, start = 4.dp))
+    Eyebrow(L10n.text(R.string.ui_b52229c807cf), Modifier.padding(bottom = 8.dp, start = 4.dp))
     TerraNavCard(modifier = Modifier.fillMaxWidth(), padding = 6.dp) {
         if (ui.fuel.isEmpty()) {
-            Text("No fill-ups yet — add your first below.", color = TextLo, fontSize = 13.sp, modifier = Modifier.padding(14.dp))
+            Text(L10n.text(R.string.ui_d064ebf2cec2), color = TextLo, fontSize = 13.sp, modifier = Modifier.padding(14.dp))
         }
         ui.fuel.forEachIndexed { i, row ->
             if (i > 0) TerraNavDivider(Modifier.padding(horizontal = 4.dp))
@@ -248,7 +250,7 @@ private fun FuelTab(ui: GarageUi, onAdd: () -> Unit, onDelete: (FuelFillup) -> U
     }
 
     Spacer(Modifier.height(14.dp))
-    TerraNavBtn("Add fill-up", onClick = onAdd, icon = TerraNavIcons.Plus, variant = BtnVariant.Ghost, size = BtnSize.Md, modifier = Modifier.fillMaxWidth())
+    TerraNavBtn(L10n.text(R.string.ui_486f10a2685e), onClick = onAdd, icon = TerraNavIcons.Plus, variant = BtnVariant.Ghost, size = BtnSize.Md, modifier = Modifier.fillMaxWidth())
 }
 
 // ── Dialogs ──────────────────────────────────────────────────────────────
@@ -263,16 +265,16 @@ private fun AddFuelDialog(defaultOdo: Int, onAdd: (Double, Double, Int, String) 
     AlertDialog(
         onDismissRequest = onDismiss,
         confirmButton = {
-            TextButton(enabled = valid, onClick = { onAdd(litres.toDouble(), cost.toDouble(), odo.toInt(), loc.trim()) }) { Text("Add", color = if (valid) Gold else TextLo) }
+            TextButton(enabled = valid, onClick = { onAdd(litres.toDouble(), cost.toDouble(), odo.toInt(), loc.trim()) }) { Text(L10n.text(R.string.ui_61cc55aa0453), color = if (valid) Gold else TextLo) }
         },
-        dismissButton = { TextButton(onClick = onDismiss) { Text("Cancel", color = TextMid) } },
-        title = { Text("Add fill-up", color = TextHi) },
+        dismissButton = { TextButton(onClick = onDismiss) { Text(L10n.text(R.string.ui_77dfd2135f4d), color = TextMid) } },
+        title = { Text(L10n.text(R.string.ui_486f10a2685e), color = TextHi) },
         text = {
             Column {
-                NumField(litres, { litres = it }, "Litres", true)
-                NumField(cost, { cost = it }, "Cost (₹)", true)
-                NumField(odo, { odo = it }, "Odometer (km)", false)
-                OutlinedTextField(loc, { loc = it }, label = { Text("Location (optional)") }, singleLine = true, modifier = Modifier.fillMaxWidth().padding(top = 8.dp))
+                NumField(litres, { litres = it }, L10n.text(R.string.ui_92517c7185b4), true)
+                NumField(cost, { cost = it }, L10n.text(R.string.ui_255a32093d6b), true)
+                NumField(odo, { odo = it }, L10n.text(R.string.ui_6a1f9fb704ab), false)
+                OutlinedTextField(loc, { loc = it }, label = { Text(L10n.text(R.string.ui_b08ded404a8c)) }, singleLine = true, modifier = Modifier.fillMaxWidth().padding(top = 8.dp))
             }
         },
         containerColor = Surf1,
@@ -288,15 +290,15 @@ private fun AddServiceDialog(onAdd: (String, String, Int) -> Unit, onDismiss: ()
     val valid = name.isNotBlank() && interval.toIntOrNull() != null && interval.toInt() > 0
     AlertDialog(
         onDismissRequest = onDismiss,
-        confirmButton = { TextButton(enabled = valid, onClick = { onAdd(name.trim(), icon, interval.toInt()) }) { Text("Add", color = if (valid) Gold else TextLo) } },
-        dismissButton = { TextButton(onClick = onDismiss) { Text("Cancel", color = TextMid) } },
-        title = { Text("Add interval", color = TextHi) },
+        confirmButton = { TextButton(enabled = valid, onClick = { onAdd(name.trim(), icon, interval.toInt()) }) { Text(L10n.text(R.string.ui_61cc55aa0453), color = if (valid) Gold else TextLo) } },
+        dismissButton = { TextButton(onClick = onDismiss) { Text(L10n.text(R.string.ui_77dfd2135f4d), color = TextMid) } },
+        title = { Text(L10n.text(R.string.ui_efc578c58e04), color = TextHi) },
         text = {
             Column {
-                OutlinedTextField(name, { name = it }, label = { Text("Name") }, singleLine = true, modifier = Modifier.fillMaxWidth())
-                NumField(interval, { interval = it }, "Interval (km)", false)
+                OutlinedTextField(name, { name = it }, label = { Text(L10n.text(R.string.ui_709a23220f2c)) }, singleLine = true, modifier = Modifier.fillMaxWidth())
+                NumField(interval, { interval = it }, L10n.text(R.string.ui_a9426d33f02c), false)
                 Spacer(Modifier.height(10.dp))
-                Eyebrow("Icon")
+                Eyebrow(L10n.text(R.string.ui_716f63b96e0c))
                 Row(Modifier.padding(top = 6.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     icons.forEach { key ->
                         Box(
@@ -318,18 +320,18 @@ private fun AddServiceDialog(onAdd: (String, String, Int) -> Unit, onDismiss: ()
 private fun LogServiceDialog(rows: List<MaintRow>, odo: Int, onMark: (MaintenanceItem) -> Unit, onDelete: (MaintenanceItem) -> Unit, onAddNew: () -> Unit, onDismiss: () -> Unit) {
     AlertDialog(
         onDismissRequest = onDismiss,
-        confirmButton = { TextButton(onClick = onAddNew) { Text("Add interval", color = Gold) } },
-        dismissButton = { TextButton(onClick = onDismiss) { Text("Close", color = TextMid) } },
-        title = { Text("Mark a service done", color = TextHi) },
+        confirmButton = { TextButton(onClick = onAddNew) { Text(L10n.text(R.string.ui_efc578c58e04), color = Gold) } },
+        dismissButton = { TextButton(onClick = onDismiss) { Text(L10n.text(R.string.ui_bbfa773e5a63), color = TextMid) } },
+        title = { Text(L10n.text(R.string.ui_6baa6287639c), color = TextHi) },
         text = {
             Column {
-                Text("Marks the item done at ${"%,d".format(odo)} km.", color = TextLo, fontSize = 12.sp, modifier = Modifier.padding(bottom = 8.dp))
+                Text(L10n.text(R.string.ui_1cbf6a273a43, "%,d".format(odo)), color = TextLo, fontSize = 12.sp, modifier = Modifier.padding(bottom = 8.dp))
                 rows.forEach { row ->
                     Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth().padding(vertical = 5.dp)) {
                         Icon(iconFor(row.item.iconKey), null, tint = TextMid, modifier = Modifier.size(18.dp))
                         Spacer(Modifier.width(10.dp))
                         Text(row.item.name, color = TextHi, fontSize = 13.5.sp, modifier = Modifier.weight(1f))
-                        TextButton(onClick = { onMark(row.item) }) { Text("Done", color = Gold, fontSize = 13.sp) }
+                        TextButton(onClick = { onMark(row.item) }) { Text(L10n.text(R.string.ui_e9b450d14bc2), color = Gold, fontSize = 13.sp) }
                         Icon(TerraNavIcons.Cross, "delete", tint = TextLo, modifier = Modifier.size(16.dp).clickable { onDelete(row.item) })
                     }
                 }
@@ -345,10 +347,10 @@ private fun OdometerDialog(current: Int, onSet: (Int) -> Unit, onDismiss: () -> 
     val valid = odo.toIntOrNull() != null
     AlertDialog(
         onDismissRequest = onDismiss,
-        confirmButton = { TextButton(enabled = valid, onClick = { onSet(odo.toInt()) }) { Text("Save", color = if (valid) Gold else TextLo) } },
-        dismissButton = { TextButton(onClick = onDismiss) { Text("Cancel", color = TextMid) } },
-        title = { Text("Set odometer", color = TextHi) },
-        text = { NumField(odo, { odo = it }, "Odometer (km)", false) },
+        confirmButton = { TextButton(enabled = valid, onClick = { onSet(odo.toInt()) }) { Text(L10n.text(R.string.ui_efc007a393f6), color = if (valid) Gold else TextLo) } },
+        dismissButton = { TextButton(onClick = onDismiss) { Text(L10n.text(R.string.ui_77dfd2135f4d), color = TextMid) } },
+        title = { Text(L10n.text(R.string.ui_23bfe6ba1a05), color = TextHi) },
+        text = { NumField(odo, { odo = it }, L10n.text(R.string.ui_6a1f9fb704ab), false) },
         containerColor = Surf1,
     )
 }

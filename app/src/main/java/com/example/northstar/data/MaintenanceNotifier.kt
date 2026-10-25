@@ -1,5 +1,7 @@
 package com.example.northstar.data
 
+import com.example.northstar.settings.L10n
+import com.example.northstar.R
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -73,19 +75,19 @@ object MaintenanceNotifier {
     private fun buildText(due: List<MaintenanceItem>, odo: Int): Pair<String, String> {
         fun line(m: MaintenanceItem): String {
             val remaining = m.lastDoneOdoKm + m.intervalKm - odo
-            return if (remaining < 0) "${m.name} — overdue ${-remaining} km"
-            else "${m.name} — due in $remaining km"
+            return if (remaining < 0) L10n.text(R.string.ui_d1b0225f99cb, m.name, -remaining)
+            else L10n.text(R.string.ui_3f2dd8617172, m.name, remaining)
         }
-        return if (due.size == 1) "Maintenance due" to line(due.first())
-        else "${due.size} services due" to due.joinToString("\n") { line(it) }
+        return if (due.size == 1) L10n.text(R.string.ui_50d83f1ed6d2) to line(due.first())
+        else L10n.text(R.string.ui_fa70519f2962, due.size) to due.joinToString("\n") { line(it) }
     }
 
     private fun ensureChannel(ctx: Context) {
         val nm = ctx.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (nm.getNotificationChannel(CHANNEL_ID) == null) {
             nm.createNotificationChannel(
-                NotificationChannel(CHANNEL_ID, "Maintenance reminders", NotificationManager.IMPORTANCE_DEFAULT)
-                    .apply { description = "Alerts when a service interval is due" }
+                NotificationChannel(CHANNEL_ID, L10n.text(R.string.ui_389f5f6d566b), NotificationManager.IMPORTANCE_DEFAULT)
+                    .apply { description = L10n.text(R.string.ui_14d7c4ed4064) }
             )
         }
     }

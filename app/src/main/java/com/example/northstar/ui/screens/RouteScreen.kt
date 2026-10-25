@@ -1,5 +1,7 @@
 package com.example.northstar.ui.screens
 
+import com.example.northstar.settings.L10n
+import com.example.northstar.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -37,11 +39,11 @@ fun RouteScreen(
 ) {
     val routeState by routeViewModel.state.collectAsState()
     val dest       = routeState.destination
-    val destName   = dest?.name?.ifBlank { "Shared location" } ?: "Shared location"
+    val destName   = dest?.name?.ifBlank { L10n.text(R.string.ui_ca99e6ee41dc) } ?: L10n.text(R.string.ui_ca99e6ee41dc)
     val destSub    = when {
         dest?.lat != null && dest.lng != null ->
             "%.5f, %.5f".format(dest.lat, dest.lng)
-        dest?.url != null -> "Maps link"
+        dest?.url != null -> L10n.text(R.string.ui_5be37a60d822)
         else              -> ""
     }
 
@@ -103,7 +105,7 @@ fun RouteScreen(
                 )
                 Spacer(Modifier.width(12.dp))
                 TerraNavChip(
-                    if (routeState.isResolving) "Resolving link…" else "Shared from Google Maps",
+                    if (routeState.isResolving) L10n.text(R.string.ui_d945e60f4848) else L10n.text(R.string.ui_74435cbf92a4),
                     tone = if (routeState.isResolving) ChipTone.Gold else ChipTone.Neutral,
                     icon = TerraNavIcons.Share,
                     modifier = Modifier.background(Color(0xB30D0F11), CircleShape),
@@ -133,7 +135,7 @@ fun RouteScreen(
 
             Spacer(Modifier.height(12.dp))
 
-            Eyebrow("Destination", Modifier.padding(bottom = 6.dp))
+            Eyebrow(L10n.text(R.string.ui_d42713493ca8), Modifier.padding(bottom = 6.dp))
 
             Row(verticalAlignment = Alignment.Top) {
                 Box(
@@ -148,7 +150,7 @@ fun RouteScreen(
                 Spacer(Modifier.width(12.dp))
                 Column {
                     if (routeState.isResolving) {
-                        Text("Resolving…", color = TextLo, fontSize = 19.sp, fontWeight = FontWeight.Bold, fontFamily = GeistFamily, letterSpacing = (-0.38).sp)
+                        Text(L10n.text(R.string.ui_786a04e7d3fd), color = TextLo, fontSize = 19.sp, fontWeight = FontWeight.Bold, fontFamily = GeistFamily, letterSpacing = (-0.38).sp)
                     } else {
                         Text(destName, color = TextHi, fontSize = 19.sp, fontWeight = FontWeight.Bold, fontFamily = GeistFamily, letterSpacing = (-0.38).sp)
                     }
@@ -163,9 +165,9 @@ fun RouteScreen(
             // Route stats (real values once routing completes)
             val routing = routeState.routing
             val statsList = listOf(
-                Triple(if (routing) "…" else (routeState.distanceText ?: "—"), "", "Distance"),
-                Triple(if (routing) "…" else (routeState.durationText ?: "—"), "", "Duration"),
-                Triple(if (routing) "…" else (routeState.etaText ?: "—"), "", "Arrive"),
+                Triple(if (routing) "…" else (routeState.distanceText ?: "—"), "", L10n.text(R.string.ui_423208095dd7)),
+                Triple(if (routing) "…" else (routeState.durationText ?: "—"), "", L10n.text(R.string.ui_1370004da76f)),
+                Triple(if (routing) "…" else (routeState.etaText ?: "—"), "", L10n.text(R.string.ui_342a85758a7a)),
             )
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 statsList.forEach { (v, u, k) ->
@@ -194,7 +196,7 @@ fun RouteScreen(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth().padding(bottom = 9.dp),
             ) {
-                Eyebrow("Voice guidance")
+                Eyebrow(L10n.text(R.string.ui_921d64e81936))
                 Icon(
                     if (voice == "Off") TerraNavIcons.SpeakerOff else TerraNavIcons.Speaker,
                     contentDescription = null,
@@ -219,10 +221,10 @@ fun RouteScreen(
             val canStart = dest?.lat != null && dest.lng != null && !routeState.isResolving
             TerraNavBtn(
                 label = when {
-                    sent                   -> "Starting navigation…"
-                    routeState.isResolving -> "Resolving destination…"
-                    routeState.routing     -> "Finding route…"
-                    else                   -> "Start navigation"
+                    sent                   -> L10n.text(R.string.ui_11b1929c3399)
+                    routeState.isResolving -> L10n.text(R.string.ui_07dffcbf42e7)
+                    routeState.routing     -> L10n.text(R.string.ui_5b44b4b8ac20)
+                    else                   -> L10n.text(R.string.ui_2a561f6bf62d)
                 },
                 onClick = { sent = true },
                 icon = if (sent) TerraNavIcons.Check else TerraNavIcons.Navi,
@@ -235,7 +237,7 @@ fun RouteScreen(
             if (canStart) {
                 Spacer(Modifier.height(10.dp))
                 TerraNavBtn(
-                    label = "Save this destination",
+                    label = L10n.text(R.string.ui_b8eee3c5f910),
                     onClick = { showSave = true },
                     icon = TerraNavIcons.Pin,
                     variant = BtnVariant.Ghost,
@@ -247,7 +249,7 @@ fun RouteScreen(
             // ── Saved destinations ──
             if (savedList.isNotEmpty()) {
                 Spacer(Modifier.height(22.dp))
-                Eyebrow("Saved destinations", Modifier.padding(bottom = 6.dp, start = 4.dp))
+                Eyebrow(L10n.text(R.string.ui_48d9ab5f3e0a), Modifier.padding(bottom = 6.dp, start = 4.dp))
                 TerraNavCard(modifier = Modifier.fillMaxWidth(), padding = 6.dp) {
                     savedList.forEachIndexed { i, loc ->
                         if (i > 0) TerraNavDivider(Modifier.padding(horizontal = 4.dp))
@@ -273,7 +275,7 @@ fun RouteScreen(
                                 )
                             }
                             Icon(
-                                TerraNavIcons.Edit, "edit", tint = TextLo,
+                                TerraNavIcons.Edit, L10n.text(R.string.ui_9ead47a82a0d), tint = TextLo,
                                 modifier = Modifier.size(18.dp).clickable { editing = loc },
                             )
                         }
@@ -304,13 +306,13 @@ private fun SaveLocationDialog(defaultName: String, onSave: (String, String) -> 
     var note by remember { mutableStateOf("") }
     androidx.compose.material3.AlertDialog(
         onDismissRequest = onDismiss,
-        confirmButton = { androidx.compose.material3.TextButton(enabled = name.isNotBlank(), onClick = { onSave(name.trim(), note.trim()) }) { Text("Save", color = if (name.isNotBlank()) Gold else TextLo) } },
-        dismissButton = { androidx.compose.material3.TextButton(onClick = onDismiss) { Text("Cancel", color = TextMid) } },
-        title = { Text("Save destination", color = TextHi) },
+        confirmButton = { androidx.compose.material3.TextButton(enabled = name.isNotBlank(), onClick = { onSave(name.trim(), note.trim()) }) { Text(L10n.text(R.string.ui_efc007a393f6), color = if (name.isNotBlank()) Gold else TextLo) } },
+        dismissButton = { androidx.compose.material3.TextButton(onClick = onDismiss) { Text(L10n.text(R.string.ui_77dfd2135f4d), color = TextMid) } },
+        title = { Text(L10n.text(R.string.ui_d82bba14f503), color = TextHi) },
         text = {
             Column {
-                androidx.compose.material3.OutlinedTextField(name, { name = it }, label = { Text("Name") }, singleLine = true, modifier = Modifier.fillMaxWidth())
-                androidx.compose.material3.OutlinedTextField(note, { note = it }, label = { Text("Note (optional)") }, singleLine = true, modifier = Modifier.fillMaxWidth().padding(top = 8.dp))
+                androidx.compose.material3.OutlinedTextField(name, { name = it }, label = { Text(L10n.text(R.string.ui_709a23220f2c)) }, singleLine = true, modifier = Modifier.fillMaxWidth())
+                androidx.compose.material3.OutlinedTextField(note, { note = it }, label = { Text(L10n.text(R.string.ui_4e39567064b6)) }, singleLine = true, modifier = Modifier.fillMaxWidth().padding(top = 8.dp))
             }
         },
         containerColor = Surf1,
@@ -323,13 +325,13 @@ private fun EditLocationDialog(loc: com.example.northstar.data.SavedLocation, on
     var note by remember { mutableStateOf(loc.note) }
     androidx.compose.material3.AlertDialog(
         onDismissRequest = onDismiss,
-        confirmButton = { androidx.compose.material3.TextButton(enabled = name.isNotBlank(), onClick = { onSave(name.trim(), note.trim()) }) { Text("Save", color = if (name.isNotBlank()) Gold else TextLo) } },
-        dismissButton = { androidx.compose.material3.TextButton(onClick = onDelete) { Text("Delete", color = Alert) } },
-        title = { Text("Edit destination", color = TextHi) },
+        confirmButton = { androidx.compose.material3.TextButton(enabled = name.isNotBlank(), onClick = { onSave(name.trim(), note.trim()) }) { Text(L10n.text(R.string.ui_efc007a393f6), color = if (name.isNotBlank()) Gold else TextLo) } },
+        dismissButton = { androidx.compose.material3.TextButton(onClick = onDelete) { Text(L10n.text(R.string.ui_f6fdbe48dc54), color = Alert) } },
+        title = { Text(L10n.text(R.string.ui_67475b1d7205), color = TextHi) },
         text = {
             Column {
-                androidx.compose.material3.OutlinedTextField(name, { name = it }, label = { Text("Name") }, singleLine = true, modifier = Modifier.fillMaxWidth())
-                androidx.compose.material3.OutlinedTextField(note, { note = it }, label = { Text("Note") }, singleLine = true, modifier = Modifier.fillMaxWidth().padding(top = 8.dp))
+                androidx.compose.material3.OutlinedTextField(name, { name = it }, label = { Text(L10n.text(R.string.ui_709a23220f2c)) }, singleLine = true, modifier = Modifier.fillMaxWidth())
+                androidx.compose.material3.OutlinedTextField(note, { note = it }, label = { Text(L10n.text(R.string.ui_2c924e308820)) }, singleLine = true, modifier = Modifier.fillMaxWidth().padding(top = 8.dp))
             }
         },
         containerColor = Surf1,

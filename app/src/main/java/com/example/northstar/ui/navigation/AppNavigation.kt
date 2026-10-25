@@ -1,5 +1,7 @@
 package com.example.northstar.ui.navigation
 
+import com.example.northstar.settings.L10n
+import com.example.northstar.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -74,7 +76,7 @@ fun AppNavigation(
     val routeState by routeViewModel.state.collectAsState()
 
     // Single source of truth for connection status: the real dash stage. Fixes Home
-    // claiming "Connected" while the Dash screen says it isn't.
+    // claiming L10n.text(R.string.ui_c2f9b7b4897f) while the Dash screen says it isn't.
     val dashUi by dashViewModel.ui.collectAsState()
     val updateContext = androidx.compose.ui.platform.LocalContext.current
     val updater = remember { com.example.northstar.update.AppUpdater.get(updateContext) }
@@ -108,7 +110,7 @@ fun AppNavigation(
 
     Column(Modifier.fillMaxSize().statusBarsPadding()) {
         if (currentRoute == Screen.Home.route && !rideActive && updateState.release != null) {
-            Text("TerraNav ${updateState.release?.versionName} disponível · Ver atualização",
+            Text(L10n.text(R.string.ui_297aeda70f5d, updateState.release?.versionName),
                 color = Gold, fontSize = 13.sp,
                 modifier = Modifier.fillMaxWidth().background(Surf1)
                     .clickable { navController.navigate(Screen.Settings.route) }.padding(14.dp))
@@ -246,7 +248,7 @@ private fun TerraNavBottomNav(
                 // selected icon downward relative to the others.
                 Box(Modifier.height(29.dp), contentAlignment = Alignment.TopCenter) {
                     Icon(
-                        tab.icon, contentDescription = tab.label,
+                        tab.icon, contentDescription = L10n.known(tab.label),
                         tint = if (active) Gold else TextLo,
                         modifier = Modifier.size(23.dp),
                     )
@@ -261,7 +263,7 @@ private fun TerraNavBottomNav(
                     }
                 }
                 Text(
-                    tab.label,
+                    L10n.known(tab.label),
                     color = if (active) Gold else TextLo,
                     fontSize = 10.5.sp,
                     fontWeight = FontWeight.SemiBold,

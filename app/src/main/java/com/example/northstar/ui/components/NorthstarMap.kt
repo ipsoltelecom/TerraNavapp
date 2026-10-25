@@ -1,5 +1,7 @@
 package com.example.northstar.ui.components
 
+import com.example.northstar.settings.L10n
+import com.example.northstar.R
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
@@ -189,8 +191,8 @@ fun TerraNavMap(
         if (riderLat != null && riderLng != null) Column(Modifier.align(Alignment.TopStart).padding(10.dp)
             .background(androidx.compose.ui.graphics.Color(0xE608111F), androidx.compose.foundation.shape.RoundedCornerShape(12.dp))
             .padding(10.dp)) {
-            androidx.compose.material3.Text("${speedLimit?.toString() ?: "—"} km/h · limite mapeado", color = androidx.compose.ui.graphics.Color.White, fontSize = 14.sp)
-            androidx.compose.material3.Text(if (riderLat != null && riderLng != null && roadData.covers(GeoPoint(riderLat,riderLng),System.currentTimeMillis())) roadData.status else "Dados da região indisponíveis", color = androidx.compose.ui.graphics.Color(0xFFA0B3CC), fontSize = 10.sp)
+            androidx.compose.material3.Text(L10n.text(R.string.mapped_speed_limit, speedLimit?.toString() ?: "—"), color = androidx.compose.ui.graphics.Color.White, fontSize = 14.sp)
+            androidx.compose.material3.Text(if (riderLat != null && riderLng != null && roadData.covers(GeoPoint(riderLat,riderLng),System.currentTimeMillis())) L10n.known(roadData.status) else L10n.text(R.string.ui_2d5f83271c84), color = androidx.compose.ui.graphics.Color(0xFFA0B3CC), fontSize = 10.sp)
         }
     }
 }

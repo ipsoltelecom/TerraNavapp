@@ -1,5 +1,7 @@
 package com.example.northstar.viewmodel
 
+import com.example.northstar.settings.L10n
+import com.example.northstar.R
 import android.app.Application
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -139,8 +141,6 @@ class DashViewModel(app: Application) : AndroidViewModel(app) {
         private const val MANUAL_IDLE_MS = 8_000L
         private const val FORCE_REDRAW_MS = 2_000L
         private const val SMOOTH_TAU = 0.28      // camera smoothing time constant (s)
-        private const val FPS_MOVING = 24        // buttery while riding
-        private const val FPS_IDLE = 7           // throttle when stopped (saves power)
     }
 
     /** Project a lat/lng forward [distM] metres along [bearingDeg] (great-circle). */
@@ -390,6 +390,8 @@ class DashViewModel(app: Application) : AndroidViewModel(app) {
     // ── Video + nav loop ────────────────────────────────────────────────────
 
     private fun startStream() {
+        // A session keeps one profile, including codec recovery. New settings apply on reconnect.
+        val quality = com.example.northstar.settings.AppSettings.get(getApplication()).quality.value
         val packetizer = RtpPacketizer { rtpPkt -> session.sendRtp(rtpPkt) }
         val nalProc    = NalProcessor { nal, _ ->
             packetizer.packetize(nal, endOfAU = true, wallClockMs = System.currentTimeMillis())
@@ -401,7 +403,7 @@ class DashViewModel(app: Application) : AndroidViewModel(app) {
             _ui.update { it.copy(frameCount = it.frameCount + 1) }
         }
         encoder?.release()
-        encoder = DashEncoder(onEncoded).also { it.prepare() }
+        encoder = DashEncoder(quality,onEncoded).also { it.prepare() }
 
         frameBitmap = Bitmap.createBitmap(DashEncoder.WIDTH, DashEncoder.HEIGHT, Bitmap.Config.ARGB_8888)
         lastSignature = ""
@@ -443,7 +445,7 @@ class DashViewModel(app: Application) : AndroidViewModel(app) {
                         // stream recovers. The fresh encoder re-emits SPS/PPS, which the
                         // NAL processor bundles into the next IDR for the dash decoder.
                         runCatching { encoder?.release() }
-                        encoder = runCatching { DashEncoder(onEncoded).also { it.prepare() } }
+                        encoder = runCatching { DashEncoder(quality,onEncoded).also { it.prepare() } }
                             .onFailure { android.util.Log.e("DashViewModel", "Encoder rebuild failed", it) }
                             .getOrNull()
                         lastSignature = "" // force a full redraw on the next tick
@@ -451,7 +453,7 @@ class DashViewModel(app: Application) : AndroidViewModel(app) {
                     }
                 }
                 // Dynamic pacing: buttery while moving, throttled when stopped (power).
-                delay(1000L / (if (camMoving) FPS_MOVING else FPS_IDLE))
+                delay(1000L / (if (camMoving) quality.movingFps else quality.idleFps))
             }
         }
     }
@@ -645,13 +647,13 @@ class DashViewModel(app: Application) : AndroidViewModel(app) {
         val mins = _ui.value.etaMinutes
         val arriving = mins != null && mins <= 0
         val etaPrimary = if (mins != null && etaArrivalMs > 0L) when {
-            arriving   -> "Arriving"
+            arriving   -> L10n.text(R.string.nav_arriving)
             mins >= 60 -> "${mins / 60}h ${mins % 60}m"
             else       -> "$mins min"
         } else null
         // 12-hour arrival clock; hidden once arriving.
         val etaSecondary = if (etaPrimary != null && !arriving)
-            java.text.SimpleDateFormat("h:mm a", java.util.Locale.getDefault()).format(java.util.Date(etaArrivalMs))
+            java.text.SimpleDateFormat("h:mm a", L10n.locale).format(java.util.Date(etaArrivalMs))
         else null
         val frame = MapRenderer.Frame(
             night = mapPreferences.night.value,

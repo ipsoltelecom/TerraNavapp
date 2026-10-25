@@ -1,13 +1,15 @@
 # TerraNav
 
-Aplicativo Android de navegação para uso com o painel Tripper Dash da Royal Enfield Himalayan 450. O usuário confirmou a conexão da versão 0.1 com sua moto; as alterações posteriores precisam de validação física.
+Aplicativo Android de navegação para uso com o painel Tripper Dash da Royal Enfield Himalayan 450. O usuário validou a versão 0.3 com sua moto. A versão 0.4 e seus novos perfis ainda precisam de validação física.
 
-## Versão 0.3-test
+## Versão 0.4-test
 
+- Idioma selecionável e persistente: inglês ou português brasileiro.
+- Qualidade de transmissão Econômica, Equilibrada ou Alta, aplicada na próxima conexão. Equilibrada preserva o perfil validado.
 - Interface azul-escuro/preta e identidade TerraNav.
 - Mapa Dia/Noite no celular e na imagem enviada ao painel.
 - Camada experimental de semáforos, radares fixos e limites cadastrados no OpenStreetMap. As consultas ao Overpass não foram validadas nesta rede por falhas/timeouts; cobertura e disponibilidade variam.
-- Atualizações por GitHub Releases: verificação ao abrir, novidades, download verificado e instalação confirmada pelo Android. A versão 0.3 deve ser instalada manualmente uma vez.
+- Atualizações por GitHub Releases: verificação ao abrir, novidades, download verificado e instalação confirmada pelo Android. Quem já tem a versão 0.3 pode atualizar pelas Configurações do app.
 - Sem acidentes, obras ou trânsito em tempo real nesta etapa.
 
 Baixe o APK em [Releases](https://github.com/ipsoltelecom/TerraNavapp/releases). As regras de publicação e assinatura estão em [DISTRIBUICAO.md](DISTRIBUICAO.md).

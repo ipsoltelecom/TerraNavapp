@@ -1,5 +1,7 @@
 package com.example.northstar.dash.map
 
+import com.example.northstar.settings.L10n
+import com.example.northstar.R
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.ColorMatrix
@@ -250,7 +252,7 @@ class MapRenderer(private val tiles: TileProvider) {
 
         // ── Standby when nothing to show (dark text on the light map bg) ──
         if (f.riderLat == null && f.destLat == null) {
-            val msg = "TERRANAV · waiting for GPS"
+            val msg = L10n.text(R.string.ui_baee842817ec)
             standbyPaint.getTextBounds(msg, 0, msg.length, textBounds)
             canvas.drawText(msg, (w - textBounds.width()) / 2f, h / 2f, standbyPaint)
         }

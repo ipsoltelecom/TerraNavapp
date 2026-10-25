@@ -1,5 +1,7 @@
 package com.example.northstar.dash.nav
 
+import com.example.northstar.settings.L10n
+import com.example.northstar.R
 import android.content.Context
 import android.media.AudioManager
 import android.media.ToneGenerator
@@ -48,7 +50,7 @@ class VoiceManager private constructor(context: Context) {
         if (tts != null) return
         tts = TextToSpeech(app) { status ->
             ttsReady = status == TextToSpeech.SUCCESS
-            if (ttsReady) tts?.language = Locale.getDefault()
+            if (ttsReady) tts?.language = L10n.locale
             else Log.w(TAG, "TextToSpeech init failed: $status")
         }
     }
@@ -62,7 +64,7 @@ class VoiceManager private constructor(context: Context) {
 
     private fun speak(text: String) {
         ensureTts()
-        if (ttsReady) tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, text.hashCode().toString())
+        if (ttsReady && (tts?.setLanguage(L10n.locale) ?: TextToSpeech.LANG_NOT_SUPPORTED) >= TextToSpeech.LANG_AVAILABLE) tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, text.hashCode().toString())
         else chime() // engine not ready yet → at least beep
     }
 
@@ -82,7 +84,7 @@ class VoiceManager private constructor(context: Context) {
         // Arrival (announced once).
         if (remainingM in 0.0..ARRIVE_M && !arrived) {
             arrived = true
-            if (_mode.value == VoiceMode.FULL) speak("You have arrived at your destination") else chime()
+            if (_mode.value == VoiceMode.FULL) speak(L10n.text(R.string.ui_35bf77dde229)) else chime()
             return
         }
         if (remainingM > ARRIVE_M) arrived = false
@@ -96,11 +98,11 @@ class VoiceManager private constructor(context: Context) {
         when {
             distanceM in 0.0..NEAR_M && !nearDone -> {
                 nearDone = true; farDone = true
-                if (_mode.value == VoiceMode.FULL) speak("Now, ${turnPhrase(maneuver)}") else chime()
+                if (_mode.value == VoiceMode.FULL) speak(L10n.text(R.string.ui_16b1f2ee820f, turnPhrase(maneuver))) else chime()
             }
             distanceM in NEAR_M..FAR_M && !farDone -> {
                 farDone = true
-                if (_mode.value == VoiceMode.FULL) speak("In ${roundDist(distanceM)}, ${turnPhrase(maneuver)}") else chime()
+                if (_mode.value == VoiceMode.FULL) speak(L10n.text(R.string.ui_87c4ef4bb56d, roundDist(distanceM), turnPhrase(maneuver))) else chime()
             }
         }
     }
@@ -115,23 +117,23 @@ class VoiceManager private constructor(context: Context) {
     }
 
     private fun turnPhrase(m: Maneuver): String = when (m.type) {
-        ManeuverType.TURN_LEFT    -> "turn left"
-        ManeuverType.TURN_RIGHT   -> "turn right"
-        ManeuverType.SLIGHT_LEFT  -> "keep left"
-        ManeuverType.SLIGHT_RIGHT -> "keep right"
-        ManeuverType.SHARP_LEFT   -> "sharp left"
-        ManeuverType.SHARP_RIGHT  -> "sharp right"
-        ManeuverType.UTURN        -> "make a U-turn"
-        ManeuverType.ROUNDABOUT   -> "enter the roundabout"
-        ManeuverType.ARRIVE       -> "you have arrived"
-        else                      -> "continue straight"
+        ManeuverType.TURN_LEFT    -> L10n.text(R.string.ui_8da88b6de957)
+        ManeuverType.TURN_RIGHT   -> L10n.text(R.string.ui_c8845877c8fe)
+        ManeuverType.SLIGHT_LEFT  -> L10n.text(R.string.ui_2c5ddc7302f4)
+        ManeuverType.SLIGHT_RIGHT -> L10n.text(R.string.ui_cf05b995ee0f)
+        ManeuverType.SHARP_LEFT   -> L10n.text(R.string.ui_8494af38f0c6)
+        ManeuverType.SHARP_RIGHT  -> L10n.text(R.string.ui_51854980827b)
+        ManeuverType.UTURN        -> L10n.text(R.string.ui_b755468008e2)
+        ManeuverType.ROUNDABOUT   -> L10n.text(R.string.ui_ac2d0c52fc73)
+        ManeuverType.ARRIVE       -> L10n.text(R.string.ui_502a243e79f8)
+        else                      -> L10n.text(R.string.ui_5c7ad5564578)
     }
 
     private fun roundDist(m: Double): String = when {
-        m >= 1000 -> "%.1f kilometers".format(m / 1000.0)
-        m >= 500  -> "500 meters"
-        m >= 200  -> "200 meters"
-        else      -> "${(m / 50).toInt() * 50} meters"
+        m >= 1000 -> L10n.text(R.string.nav_kilometers, "%.1f".format(L10n.locale, m / 1000.0))
+        m >= 500  -> L10n.text(R.string.ui_b3a5b8b6cd26)
+        m >= 200  -> L10n.text(R.string.ui_c1df0ebd64a0)
+        else      -> L10n.text(R.string.ui_35062d22f685, (m / 50).toInt() * 50)
     }
 
     companion object {

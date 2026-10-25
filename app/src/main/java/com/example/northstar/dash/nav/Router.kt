@@ -1,5 +1,7 @@
 package com.example.northstar.dash.nav
 
+import com.example.northstar.settings.L10n
+import com.example.northstar.R
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -89,17 +91,17 @@ object Router {
     }
 
     private fun buildInstruction(type: ManeuverType, road: String): String = when (type) {
-        ManeuverType.DEPART       -> "Head out on $road"
-        ManeuverType.ARRIVE       -> "Arrive at destination"
-        ManeuverType.TURN_LEFT    -> "Turn left onto $road"
-        ManeuverType.TURN_RIGHT   -> "Turn right onto $road"
-        ManeuverType.SLIGHT_LEFT  -> "Slight left onto $road"
-        ManeuverType.SLIGHT_RIGHT -> "Slight right onto $road"
-        ManeuverType.SHARP_LEFT   -> "Sharp left onto $road"
-        ManeuverType.SHARP_RIGHT  -> "Sharp right onto $road"
-        ManeuverType.UTURN        -> "Make a U-turn"
-        ManeuverType.ROUNDABOUT   -> "At the roundabout, take $road"
-        ManeuverType.CONTINUE     -> "Continue on $road"
+        ManeuverType.DEPART       -> L10n.text(R.string.ui_0286264429aa, road)
+        ManeuverType.ARRIVE       -> L10n.text(R.string.ui_752fdaec403b)
+        ManeuverType.TURN_LEFT    -> L10n.text(R.string.ui_6d33a3916980, road)
+        ManeuverType.TURN_RIGHT   -> L10n.text(R.string.ui_57e343ca8a7a, road)
+        ManeuverType.SLIGHT_LEFT  -> L10n.text(R.string.ui_f26820fcb381, road)
+        ManeuverType.SLIGHT_RIGHT -> L10n.text(R.string.ui_1890e08dc21f, road)
+        ManeuverType.SHARP_LEFT   -> L10n.text(R.string.ui_aba0086c3882, road)
+        ManeuverType.SHARP_RIGHT  -> L10n.text(R.string.ui_578132a69223, road)
+        ManeuverType.UTURN        -> L10n.text(R.string.ui_9908f9679cde)
+        ManeuverType.ROUNDABOUT   -> L10n.text(R.string.ui_fe4aea1e6e00, road)
+        ManeuverType.CONTINUE     -> L10n.text(R.string.ui_d594afbedac1, road)
     }
 
     /** Cumulative distance of the geometry vertex nearest to a maneuver location. */

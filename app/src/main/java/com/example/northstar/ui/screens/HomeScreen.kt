@@ -1,5 +1,7 @@
 package com.example.northstar.ui.screens
 
+import com.example.northstar.settings.L10n
+import com.example.northstar.R
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -34,9 +36,9 @@ fun HomeScreen(
 ) {
     val saved by routeViewModel.saved.collectAsState()
     val status = when (conn) {
-        ConnectionState.Connected -> Triple("Connected", "Streaming to Tripper Dash", Gold)
-        ConnectionState.Searching -> Triple("Searching…", "Looking for Tripper Dash", Warn)
-        ConnectionState.Offline   -> Triple("Offline", "Dash not detected", Offline)
+        ConnectionState.Connected -> Triple(L10n.text(R.string.ui_c2f9b7b4897f), L10n.text(R.string.ui_f5a39ef50252), Gold)
+        ConnectionState.Searching -> Triple(L10n.text(R.string.ui_1a6a5ba8c23d), L10n.text(R.string.ui_78b63e776bab), Warn)
+        ConnectionState.Offline   -> Triple(L10n.text(R.string.ui_e01fa717bacc), L10n.text(R.string.ui_ff9922bc189a), Offline)
     }
     val (statusLabel, statusSub, statusDot) = status
 
@@ -112,7 +114,7 @@ fun HomeScreen(
         Spacer(Modifier.height(18.dp))
 
         TerraNavBtn(
-            "Start navigation", onClick = { onNavigate("route") },
+            L10n.text(R.string.ui_2a561f6bf62d), onClick = { onNavigate("route") },
             icon = TerraNavIcons.Navi, variant = BtnVariant.Primary, size = BtnSize.Lg,
             modifier = Modifier.fillMaxWidth(),
         )
@@ -120,19 +122,19 @@ fun HomeScreen(
         Spacer(Modifier.height(10.dp))
 
         TerraNavBtn(
-            "Open dash view", onClick = { onNavigate("dash") },
+            L10n.text(R.string.ui_3477dde3aaf8), onClick = { onNavigate("dash") },
             icon = TerraNavIcons.Dash, variant = BtnVariant.Secondary, size = BtnSize.Md,
             modifier = Modifier.fillMaxWidth(),
         )
 
         Spacer(Modifier.height(18.dp))
 
-        Eyebrow("Saved destinations", Modifier.padding(bottom = 6.dp, start = 4.dp))
+        Eyebrow(L10n.text(R.string.ui_48d9ab5f3e0a), Modifier.padding(bottom = 6.dp, start = 4.dp))
 
         if (saved.isEmpty()) {
             TerraNavCard(modifier = Modifier.fillMaxWidth(), padding = 16.dp) {
                 Text(
-                    "No saved destinations yet. Share a place from Google Maps, then tap “Save this destination”.",
+                    L10n.text(R.string.ui_42b2178a05dd),
                     color = TextLo, fontSize = 13.sp,
                 )
             }

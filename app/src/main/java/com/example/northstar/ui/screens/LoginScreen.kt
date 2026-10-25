@@ -1,5 +1,7 @@
 package com.example.northstar.ui.screens
 
+import com.example.northstar.settings.L10n
+import com.example.northstar.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -66,7 +68,7 @@ fun LoginScreen(
                     authViewModel.signInWithGoogle(googleCredential.idToken)
                 }
             } catch (e: GetCredentialException) {
-                cmError = e.message ?: "Google sign-in failed"
+                cmError = e.message ?: L10n.text(R.string.ui_44c242032bb2)
             }
         }
     }
@@ -93,7 +95,7 @@ fun LoginScreen(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center,
             ) {
-                androidx.compose.foundation.Image(painter = androidx.compose.ui.res.painterResource(com.example.northstar.R.drawable.terranav_logo), contentDescription = "TerraNav: moto na montanha", modifier = Modifier.size(140.dp))
+                androidx.compose.foundation.Image(painter = androidx.compose.ui.res.painterResource(com.example.northstar.R.drawable.terranav_logo), contentDescription = L10n.text(R.string.ui_e21735a6b4bf), modifier = Modifier.size(140.dp))
 
                 Spacer(Modifier.height(30.dp))
 
@@ -113,7 +115,7 @@ fun LoginScreen(
                 Spacer(Modifier.height(12.dp))
 
                 Text(
-                    "Your Himalayan's co-pilot.\nRoutes to the dash, eyes on the road.",
+                    L10n.text(R.string.ui_2a84507a28e1),
                     color = TextMid,
                     fontSize = 14.sp,
                     lineHeight = 21.sp,
@@ -151,7 +153,7 @@ fun LoginScreen(
                         Text("G", color = Color(0xFF4285F4), fontWeight = FontWeight.Bold, fontSize = 18.sp)
                         Spacer(Modifier.width(12.dp))
                         Text(
-                            if (loading) "Signing in…" else "Continue with Google",
+                            if (loading) L10n.text(R.string.ui_c66b2adcc5fc) else L10n.text(R.string.ui_ccc5b0edaae6),
                             color = if (loading) TextMid else Color(0xFF1F1F1F),
                             fontSize = 15.sp, fontWeight = FontWeight.Medium,
                         )
@@ -161,7 +163,7 @@ fun LoginScreen(
 
                 // Always available: use the app locally without an account (no sync).
                 Text(
-                    if (authState.syncAvailable) "Continue without signing in" else "Continue",
+                    if (authState.syncAvailable) L10n.text(R.string.ui_1215dccb2bca) else L10n.text(R.string.ui_2e02623966f9),
                     color = TextHi, fontSize = 15.sp, fontWeight = FontWeight.SemiBold, textAlign = TextAlign.Center,
                     modifier = Modifier
                         .fillMaxWidth()
@@ -182,8 +184,8 @@ fun LoginScreen(
                     Box(Modifier.size(5.dp).clip(CircleShape).background(TextLo))
                     Spacer(Modifier.width(7.dp))
                     Text(
-                        if (authState.syncAvailable) "Sign in to sync across devices · data stays local otherwise"
-                        else "Local only · add a Firebase project to sync across devices",
+                        if (authState.syncAvailable) L10n.text(R.string.ui_2b7d01c35184)
+                        else L10n.text(R.string.ui_09d6a286d5b4),
                         color = TextLo, fontSize = 12.5.sp, textAlign = TextAlign.Center,
                     )
                 }
