@@ -231,18 +231,20 @@ class MapRenderer(private val tiles: TileProvider) {
 
         if (rotate) canvas.restore()
 
-        // Inside the circular bezel, clear of the rider and ETA. Unknown is explicit.
-        val bx = w / 2f - 87f; val by = h / 2f - 20f
-        dotPaint.color = Color.WHITE; canvas.drawCircle(bx,by,23f,dotPaint)
-        dotPaint.color = Color.rgb(201,56,58); dotPaint.style = Paint.Style.STROKE
-        dotPaint.strokeWidth = 3f; canvas.drawCircle(bx,by,21f,dotPaint)
-        dotPaint.style = Paint.Style.FILL
-        val badgePaint = etaBigPaint
-        val oldColor = badgePaint.color
-        badgePaint.color = Color.rgb(8,17,31)
-        canvas.drawText(f.speedLimit?.toString() ?: "—",bx,by+7f,badgePaint)
-        badgePaint.color = oldColor
-        canvas.drawText("km/h",bx,by+36f,etaSmallPaint)
+        // Draw only a known road limit; missing data leaves the map unobstructed.
+        f.speedLimit?.takeIf { it in 1..200 }?.let { limit ->
+            val bx = w / 2f - 87f; val by = h / 2f - 20f
+            dotPaint.color = Color.WHITE; canvas.drawCircle(bx,by,23f,dotPaint)
+            dotPaint.color = Color.rgb(201,56,58); dotPaint.style = Paint.Style.STROKE
+            dotPaint.strokeWidth = 3f; canvas.drawCircle(bx,by,21f,dotPaint)
+            dotPaint.style = Paint.Style.FILL
+            val badgePaint = etaBigPaint
+            val oldColor = badgePaint.color
+            badgePaint.color = Color.rgb(8,17,31)
+            canvas.drawText(limit.toString(),bx,by+7f,badgePaint)
+            badgePaint.color = oldColor
+            canvas.drawText("km/h",bx,by+36f,etaSmallPaint)
+        }
 
         // ── ETA pill (screen-space so it stays upright; bottom-centre safe zone) ──
         // The dash is round, so it's kept narrow and centred. Shows ETA only (time +

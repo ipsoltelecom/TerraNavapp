@@ -189,11 +189,13 @@ fun TerraNavMap(
 
     Box(modifier) {
         AndroidView(factory = { mapView }, modifier = Modifier.fillMaxSize())
-        if (riderLat != null && riderLng != null) Column(Modifier.align(Alignment.TopStart).padding(10.dp)
+        val visibleLimit = speedLimit?.takeIf { it in 1..200 && riderLat != null && riderLng != null &&
+            roadData.covers(GeoPoint(riderLat, riderLng), System.currentTimeMillis()) }
+        if (visibleLimit != null) Column(Modifier.align(Alignment.CenterStart).padding(start = 36.dp)
             .background(androidx.compose.ui.graphics.Color(0xE608111F), androidx.compose.foundation.shape.RoundedCornerShape(12.dp))
-            .padding(10.dp)) {
-            androidx.compose.material3.Text(L10n.text(R.string.mapped_speed_limit, speedLimit?.toString() ?: "—"), color = androidx.compose.ui.graphics.Color.White, fontSize = 14.sp)
-            androidx.compose.material3.Text(if (riderLat != null && riderLng != null && roadData.covers(GeoPoint(riderLat,riderLng),System.currentTimeMillis())) L10n.known(roadData.status) else L10n.text(R.string.ui_2d5f83271c84), color = androidx.compose.ui.graphics.Color(0xFFA0B3CC), fontSize = 10.sp)
+            .padding(10.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+            androidx.compose.material3.Text(visibleLimit.toString(), color = androidx.compose.ui.graphics.Color.White, fontSize = 18.sp)
+            androidx.compose.material3.Text("km/h", color = androidx.compose.ui.graphics.Color(0xFFA0B3CC), fontSize = 10.sp)
         }
     }
 }

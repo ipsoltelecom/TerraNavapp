@@ -24,8 +24,8 @@ android {
         applicationId = "br.tec.ipsol.terranav.test"
         minSdk = 24
         targetSdk = 36
-        versionCode = 6
-        versionName = "0.6-test"
+        versionCode = 7
+        versionName = "0.7-test"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
